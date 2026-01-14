@@ -1,0 +1,23 @@
+{
+  "id": "template_00016",
+  "filename": "template_00016.pdf",
+  "layout_type": "elegant_classic",
+  "colors": {
+    "primary": "#D32F2F",
+    "secondary": "#F1F8E9",
+    "accent": "#1976D2"
+  },
+  "pages": 12,
+  "created_at": "2026-01-14T20:55:58.293928",
+  "tags": [
+    "элегантный",
+    "elegant_classic",
+    "красный",
+    "зелёный",
+    "портфолио",
+    "макет",
+    "современный"
+  ],
+  "description": "Классический элегантный стиль с традиционными элементами",
+  "index": 15
+}

@@ -1,0 +1,23 @@
+{
+  "id": "template_00030",
+  "filename": "template_00030.pdf",
+  "layout_type": "dark_professional",
+  "colors": {
+    "primary": "#5E35B1",
+    "secondary": "#E0F2F1",
+    "accent": "#F57C00"
+  },
+  "pages": 11,
+  "created_at": "2026-01-14T20:55:58.748056",
+  "tags": [
+    "элегантный",
+    "синий",
+    "зелёный",
+    "каталог",
+    "презентация",
+    "dark_professional",
+    "профессиональный"
+  ],
+  "description": "Профессиональный тёмный дизайн для солидных организаций",
+  "index": 29
+}

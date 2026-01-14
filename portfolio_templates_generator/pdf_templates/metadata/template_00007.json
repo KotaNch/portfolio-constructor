@@ -1,0 +1,23 @@
+{
+  "id": "template_00007",
+  "filename": "template_00007.pdf",
+  "layout_type": "dark_professional",
+  "colors": {
+    "primary": "#2E7D32",
+    "secondary": "#FCE4EC",
+    "accent": "#0277BD"
+  },
+  "pages": 15,
+  "created_at": "2026-01-14T20:55:57.976623",
+  "tags": [
+    "элегантный",
+    "оранжевый",
+    "фиолетовый",
+    "ftc",
+    "макет",
+    "детальный",
+    "dark_professional"
+  ],
+  "description": "Профессиональный тёмный дизайн для солидных организаций",
+  "index": 6
+}

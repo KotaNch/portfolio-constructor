@@ -62,7 +62,7 @@ class TemplateSearchEngine:
         Returns:
             Список найденных шаблонов с оценками релевантности
         """
-        if not self.tfidf_matrix:
+        if self.tfidf_matrix is None or self.tfidf_matrix.shape[0] == 0:
             return []
         
         # Преобразуем промт в вектор
@@ -76,9 +76,15 @@ class TemplateSearchEngine:
         
         results = []
         for idx in top_indices:
-            if similarities[idx] > 0:  # Только если есть хоть какое-то совпадение
+            score = float(similarities[idx])  # Конвертируем в обычный float
+            if score > 0:  # Только если есть хоть какое-то совпадение
                 template = self.templates[int(idx)].copy()
-                template['relevance_score'] = float(similarities[idx])
+                template['relevance_score'] = score
+                
+                # Убедимся что теги это список строк
+                if 'tags' in template and not isinstance(template['tags'], list):
+                    template['tags'] = list(template['tags'])
+                
                 results.append(template)
         
         return results

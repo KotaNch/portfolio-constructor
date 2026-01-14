@@ -57,7 +57,10 @@ def search_templates():
             'templates': results
         }), 200
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        import traceback
+        print(f"❌ Ошибка поиска: {str(e)}")
+        traceback.print_exc()
+        return jsonify({'error': str(e), 'type': type(e).__name__}), 500
 
 # =============== ПОИСК ПО ТЕГАМ ===============
 @app.route('/api/search-by-tags', methods=['POST'])

@@ -1,0 +1,2306 @@
+{
+  "total_templates": 100,
+  "generated_at": "2026-01-14T20:56:01.074172",
+  "templates": [
+    {
+      "id": "template_00001",
+      "filename": "template_00001.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:55:57.755526",
+      "tags": [
+        "простой",
+        "красный",
+        "зелёный",
+        "портфолио",
+        "презентация",
+        "детальный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 0
+    },
+    {
+      "id": "template_00002",
+      "filename": "template_00002.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:57.790191",
+      "tags": [
+        "красный",
+        "оранжевый",
+        "modern_minimal",
+        "презентация",
+        "яркий",
+        "детальный",
+        "каталог"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 1
+    },
+    {
+      "id": "template_00003",
+      "filename": "template_00003.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:57.829877",
+      "tags": [
+        "красный",
+        "оранжевый",
+        "creative_artistic",
+        "каталог",
+        "яркий",
+        "детальный",
+        "макет"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 2
+    },
+    {
+      "id": "template_00004",
+      "filename": "template_00004.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:57.870070",
+      "tags": [
+        "простой",
+        "elegant_classic",
+        "красный",
+        "элегантный",
+        "оранжевый",
+        "презентация",
+        "макет"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 3
+    },
+    {
+      "id": "template_00005",
+      "filename": "template_00005.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:57.905339",
+      "tags": [
+        "элегантный",
+        "elegant_classic",
+        "красный",
+        "оранжевый",
+        "макет",
+        "минималистичный",
+        "шаблон"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 4
+    },
+    {
+      "id": "template_00006",
+      "filename": "template_00006.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:57.935562",
+      "tags": [
+        "творческий",
+        "elegant_classic",
+        "красный",
+        "оранжевый",
+        "презентация",
+        "макет",
+        "современный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 5
+    },
+    {
+      "id": "template_00007",
+      "filename": "template_00007.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:57.976623",
+      "tags": [
+        "элегантный",
+        "оранжевый",
+        "фиолетовый",
+        "ftc",
+        "макет",
+        "детальный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 6
+    },
+    {
+      "id": "template_00008",
+      "filename": "template_00008.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:58.014004",
+      "tags": [
+        "простой",
+        "фиолетовый",
+        "зелёный",
+        "ftc",
+        "презентация",
+        "современный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 7
+    },
+    {
+      "id": "template_00009",
+      "filename": "template_00009.pdf",
+      "layout_type": "nature_inspired",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:58.043176",
+      "tags": [
+        "элегантный",
+        "синий",
+        "зелёный",
+        "ftc",
+        "nature_inspired",
+        "презентация",
+        "яркий"
+      ],
+      "description": "Дизайн вдохновлённый природой с органичными формами",
+      "index": 8
+    },
+    {
+      "id": "template_00010",
+      "filename": "template_00010.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:58.079844",
+      "tags": [
+        "элегантный",
+        "красный",
+        "шаблон",
+        "зелёный",
+        "презентация",
+        "детальный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 9
+    },
+    {
+      "id": "template_00011",
+      "filename": "template_00011.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:58.117961",
+      "tags": [
+        "элегантный",
+        "elegant_classic",
+        "красный",
+        "зелёный",
+        "ftc",
+        "макет",
+        "профессиональный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 10
+    },
+    {
+      "id": "template_00012",
+      "filename": "template_00012.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.159456",
+      "tags": [
+        "startup_modern",
+        "фиолетовый",
+        "оранжевый",
+        "портфолио",
+        "презентация",
+        "детальный",
+        "минималистичный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 11
+    },
+    {
+      "id": "template_00013",
+      "filename": "template_00013.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:58.191872",
+      "tags": [
+        "творческий",
+        "оранжевый",
+        "creative_artistic",
+        "фиолетовый",
+        "портфолио",
+        "каталог",
+        "современный"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 12
+    },
+    {
+      "id": "template_00014",
+      "filename": "template_00014.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:58.225332",
+      "tags": [
+        "творческий",
+        "простой",
+        "красный",
+        "фиолетовый",
+        "creative_artistic",
+        "презентация",
+        "макет"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 13
+    },
+    {
+      "id": "template_00015",
+      "filename": "template_00015.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:58.261062",
+      "tags": [
+        "творческий",
+        "elegant_classic",
+        "красный",
+        "зелёный",
+        "ftc",
+        "каталог",
+        "детальный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 14
+    },
+    {
+      "id": "template_00016",
+      "filename": "template_00016.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:58.293928",
+      "tags": [
+        "элегантный",
+        "elegant_classic",
+        "красный",
+        "зелёный",
+        "портфолио",
+        "макет",
+        "современный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 15
+    },
+    {
+      "id": "template_00017",
+      "filename": "template_00017.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.331694",
+      "tags": [
+        "простой",
+        "синий",
+        "красный",
+        "startup_modern",
+        "ftc",
+        "яркий",
+        "макет"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 16
+    },
+    {
+      "id": "template_00018",
+      "filename": "template_00018.pdf",
+      "layout_type": "nature_inspired",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:58.365812",
+      "tags": [
+        "элегантный",
+        "оранжевый",
+        "фиолетовый",
+        "портфолио",
+        "nature_inspired",
+        "каталог",
+        "яркий"
+      ],
+      "description": "Дизайн вдохновлённый природой с органичными формами",
+      "index": 17
+    },
+    {
+      "id": "template_00019",
+      "filename": "template_00019.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:58.398718",
+      "tags": [
+        "элегантный",
+        "красный",
+        "colorful_vibrant",
+        "синий",
+        "портфолио",
+        "современный",
+        "шаблон"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 18
+    },
+    {
+      "id": "template_00020",
+      "filename": "template_00020.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:58.426822",
+      "tags": [
+        "tech_focused",
+        "фиолетовый",
+        "зелёный",
+        "презентация",
+        "каталог",
+        "детальный",
+        "минималистичный"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 19
+    },
+    {
+      "id": "template_00021",
+      "filename": "template_00021.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:58.460667",
+      "tags": [
+        "творческий",
+        "красный",
+        "фиолетовый",
+        "ftc",
+        "каталог",
+        "яркий",
+        "minimalist_clean"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 20
+    },
+    {
+      "id": "template_00022",
+      "filename": "template_00022.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.496813",
+      "tags": [
+        "элегантный",
+        "startup_modern",
+        "оранжевый",
+        "зелёный",
+        "ftc",
+        "яркий",
+        "макет"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 21
+    },
+    {
+      "id": "template_00023",
+      "filename": "template_00023.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.529909",
+      "tags": [
+        "красный",
+        "startup_modern",
+        "фиолетовый",
+        "презентация",
+        "макет",
+        "минималистичный",
+        "профессиональный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 22
+    },
+    {
+      "id": "template_00024",
+      "filename": "template_00024.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:58.557501",
+      "tags": [
+        "творческий",
+        "синий",
+        "красный",
+        "ftc",
+        "портфолио",
+        "современный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 23
+    },
+    {
+      "id": "template_00025",
+      "filename": "template_00025.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.589858",
+      "tags": [
+        "творческий",
+        "красный",
+        "startup_modern",
+        "зелёный",
+        "ftc",
+        "каталог",
+        "яркий"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 24
+    },
+    {
+      "id": "template_00026",
+      "filename": "template_00026.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:58.621081",
+      "tags": [
+        "синий",
+        "tech_focused",
+        "оранжевый",
+        "портфолио",
+        "минималистичный",
+        "современный",
+        "шаблон"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 25
+    },
+    {
+      "id": "template_00027",
+      "filename": "template_00027.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:58.655723",
+      "tags": [
+        "elegant_classic",
+        "красный",
+        "оранжевый",
+        "презентация",
+        "макет",
+        "современный",
+        "профессиональный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 26
+    },
+    {
+      "id": "template_00028",
+      "filename": "template_00028.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:58.687163",
+      "tags": [
+        "синий",
+        "creative_artistic",
+        "зелёный",
+        "каталог",
+        "презентация",
+        "минималистичный",
+        "профессиональный"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 27
+    },
+    {
+      "id": "template_00029",
+      "filename": "template_00029.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:58.719478",
+      "tags": [
+        "corporate_bold",
+        "красный",
+        "зелёный",
+        "портфолио",
+        "ftc",
+        "яркий",
+        "современный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 28
+    },
+    {
+      "id": "template_00030",
+      "filename": "template_00030.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:58.748056",
+      "tags": [
+        "элегантный",
+        "синий",
+        "зелёный",
+        "каталог",
+        "презентация",
+        "dark_professional",
+        "профессиональный"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 29
+    },
+    {
+      "id": "template_00031",
+      "filename": "template_00031.pdf",
+      "layout_type": "nature_inspired",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:58.785764",
+      "tags": [
+        "синий",
+        "зелёный",
+        "ftc",
+        "nature_inspired",
+        "яркий",
+        "макет",
+        "современный"
+      ],
+      "description": "Дизайн вдохновлённый природой с органичными формами",
+      "index": 30
+    },
+    {
+      "id": "template_00032",
+      "filename": "template_00032.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:58.823273",
+      "tags": [
+        "творческий",
+        "elegant_classic",
+        "оранжевый",
+        "фиолетовый",
+        "презентация",
+        "минималистичный",
+        "шаблон"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 31
+    },
+    {
+      "id": "template_00033",
+      "filename": "template_00033.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.863555",
+      "tags": [
+        "синий",
+        "фиолетовый",
+        "ftc",
+        "minimalist_clean",
+        "детальный",
+        "минималистичный",
+        "шаблон"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 32
+    },
+    {
+      "id": "template_00034",
+      "filename": "template_00034.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:58.895863",
+      "tags": [
+        "творческий",
+        "элегантный",
+        "красный",
+        "фиолетовый",
+        "creative_artistic",
+        "каталог",
+        "макет"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 33
+    },
+    {
+      "id": "template_00035",
+      "filename": "template_00035.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:55:58.924480",
+      "tags": [
+        "творческий",
+        "синий",
+        "зелёный",
+        "каталог",
+        "яркий",
+        "презентация",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 34
+    },
+    {
+      "id": "template_00036",
+      "filename": "template_00036.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:58.955070",
+      "tags": [
+        "синий",
+        "красный",
+        "ftc",
+        "портфолио",
+        "яркий",
+        "минималистичный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 35
+    },
+    {
+      "id": "template_00037",
+      "filename": "template_00037.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:58.992550",
+      "tags": [
+        "творческий",
+        "corporate_bold",
+        "красный",
+        "оранжевый",
+        "портфолио",
+        "макет",
+        "современный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 36
+    },
+    {
+      "id": "template_00038",
+      "filename": "template_00038.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:59.025721",
+      "tags": [
+        "творческий",
+        "красный",
+        "зелёный",
+        "ftc",
+        "minimalist_clean",
+        "макет",
+        "профессиональный"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 37
+    },
+    {
+      "id": "template_00039",
+      "filename": "template_00039.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:59.064105",
+      "tags": [
+        "творческий",
+        "простой",
+        "синий",
+        "startup_modern",
+        "зелёный",
+        "ftc",
+        "презентация"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 38
+    },
+    {
+      "id": "template_00040",
+      "filename": "template_00040.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:59.105245",
+      "tags": [
+        "простой",
+        "красный",
+        "элегантный",
+        "tech_focused",
+        "оранжевый",
+        "ftc",
+        "макет"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 39
+    },
+    {
+      "id": "template_00041",
+      "filename": "template_00041.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:59.145480",
+      "tags": [
+        "красный",
+        "colorful_vibrant",
+        "зелёный",
+        "ftc",
+        "презентация",
+        "яркий",
+        "детальный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 40
+    },
+    {
+      "id": "template_00042",
+      "filename": "template_00042.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:59.179338",
+      "tags": [
+        "творческий",
+        "синий",
+        "оранжевый",
+        "creative_artistic",
+        "каталог",
+        "презентация",
+        "современный"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 41
+    },
+    {
+      "id": "template_00043",
+      "filename": "template_00043.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:59.213005",
+      "tags": [
+        "элегантный",
+        "colorful_vibrant",
+        "фиолетовый",
+        "зелёный",
+        "ftc",
+        "каталог",
+        "современный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 42
+    },
+    {
+      "id": "template_00044",
+      "filename": "template_00044.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:59.241619",
+      "tags": [
+        "творческий",
+        "простой",
+        "красный",
+        "оранжевый",
+        "modern_minimal",
+        "портфолио",
+        "презентация"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 43
+    },
+    {
+      "id": "template_00045",
+      "filename": "template_00045.pdf",
+      "layout_type": "nature_inspired",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:59.274940",
+      "tags": [
+        "синий",
+        "зелёный",
+        "портфолио",
+        "ftc",
+        "nature_inspired",
+        "современный",
+        "профессиональный"
+      ],
+      "description": "Дизайн вдохновлённый природой с органичными формами",
+      "index": 44
+    },
+    {
+      "id": "template_00046",
+      "filename": "template_00046.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:59.312839",
+      "tags": [
+        "творческий",
+        "красный",
+        "startup_modern",
+        "фиолетовый",
+        "ftc",
+        "портфолио",
+        "минималистичный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 45
+    },
+    {
+      "id": "template_00047",
+      "filename": "template_00047.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:59.344896",
+      "tags": [
+        "elegant_classic",
+        "красный",
+        "фиолетовый",
+        "портфолио",
+        "презентация",
+        "современный",
+        "профессиональный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 46
+    },
+    {
+      "id": "template_00048",
+      "filename": "template_00048.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:59.381943",
+      "tags": [
+        "красный",
+        "синий",
+        "startup_modern",
+        "портфолио",
+        "каталог",
+        "детальный",
+        "профессиональный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 47
+    },
+    {
+      "id": "template_00049",
+      "filename": "template_00049.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:59.415431",
+      "tags": [
+        "синий",
+        "фиолетовый",
+        "creative_artistic",
+        "презентация",
+        "макет",
+        "детальный",
+        "профессиональный"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 48
+    },
+    {
+      "id": "template_00050",
+      "filename": "template_00050.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:59.444055",
+      "tags": [
+        "элегантный",
+        "синий",
+        "оранжевый",
+        "ftc",
+        "каталог",
+        "современный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 49
+    },
+    {
+      "id": "template_00051",
+      "filename": "template_00051.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:59.472194",
+      "tags": [
+        "творческий",
+        "corporate_bold",
+        "красный",
+        "синий",
+        "каталог",
+        "макет",
+        "современный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 50
+    },
+    {
+      "id": "template_00052",
+      "filename": "template_00052.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:59.500632",
+      "tags": [
+        "простой",
+        "фиолетовый",
+        "зелёный",
+        "ftc",
+        "макет",
+        "детальный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 51
+    },
+    {
+      "id": "template_00053",
+      "filename": "template_00053.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:55:59.525347",
+      "tags": [
+        "синий",
+        "modern_minimal",
+        "зелёный",
+        "каталог",
+        "яркий",
+        "макет",
+        "профессиональный"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 52
+    },
+    {
+      "id": "template_00054",
+      "filename": "template_00054.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:59.555073",
+      "tags": [
+        "простой",
+        "corporate_bold",
+        "синий",
+        "зелёный",
+        "каталог",
+        "макет",
+        "детальный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 53
+    },
+    {
+      "id": "template_00055",
+      "filename": "template_00055.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:59.590192",
+      "tags": [
+        "elegant_classic",
+        "оранжевый",
+        "фиолетовый",
+        "ftc",
+        "детальный",
+        "современный",
+        "шаблон"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 54
+    },
+    {
+      "id": "template_00056",
+      "filename": "template_00056.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:59.618781",
+      "tags": [
+        "простой",
+        "синий",
+        "tech_focused",
+        "зелёный",
+        "каталог",
+        "макет",
+        "минималистичный"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 55
+    },
+    {
+      "id": "template_00057",
+      "filename": "template_00057.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:55:59.647233",
+      "tags": [
+        "элегантный",
+        "tech_focused",
+        "оранжевый",
+        "зелёный",
+        "презентация",
+        "шаблон",
+        "профессиональный"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 56
+    },
+    {
+      "id": "template_00058",
+      "filename": "template_00058.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:59.683022",
+      "tags": [
+        "творческий",
+        "элегантный",
+        "оранжевый",
+        "creative_artistic",
+        "фиолетовый",
+        "ftc",
+        "шаблон"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 57
+    },
+    {
+      "id": "template_00059",
+      "filename": "template_00059.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:59.719897",
+      "tags": [
+        "синий",
+        "фиолетовый",
+        "портфолио",
+        "презентация",
+        "детальный",
+        "минималистичный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 58
+    },
+    {
+      "id": "template_00060",
+      "filename": "template_00060.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:55:59.763005",
+      "tags": [
+        "простой",
+        "corporate_bold",
+        "синий",
+        "оранжевый",
+        "каталог",
+        "минималистичный",
+        "шаблон"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 59
+    },
+    {
+      "id": "template_00061",
+      "filename": "template_00061.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:55:59.791360",
+      "tags": [
+        "элегантный",
+        "corporate_bold",
+        "красный",
+        "синий",
+        "портфолио",
+        "яркий",
+        "шаблон"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 60
+    },
+    {
+      "id": "template_00062",
+      "filename": "template_00062.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:59.824973",
+      "tags": [
+        "творческий",
+        "красный",
+        "colorful_vibrant",
+        "оранжевый",
+        "портфолио",
+        "каталог",
+        "минималистичный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 61
+    },
+    {
+      "id": "template_00063",
+      "filename": "template_00063.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:55:59.854284",
+      "tags": [
+        "startup_modern",
+        "фиолетовый",
+        "зелёный",
+        "презентация",
+        "каталог",
+        "детальный",
+        "профессиональный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 62
+    },
+    {
+      "id": "template_00064",
+      "filename": "template_00064.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:55:59.881632",
+      "tags": [
+        "красный",
+        "зелёный",
+        "ftc",
+        "яркий",
+        "макет",
+        "минималистичный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 63
+    },
+    {
+      "id": "template_00065",
+      "filename": "template_00065.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:55:59.916822",
+      "tags": [
+        "творческий",
+        "простой",
+        "синий",
+        "красный",
+        "портфолио",
+        "презентация",
+        "minimalist_clean"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 64
+    },
+    {
+      "id": "template_00066",
+      "filename": "template_00066.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:55:59.950429",
+      "tags": [
+        "элегантный",
+        "оранжевый",
+        "зелёный",
+        "ftc",
+        "презентация",
+        "minimalist_clean",
+        "современный"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 65
+    },
+    {
+      "id": "template_00067",
+      "filename": "template_00067.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:55:59.984701",
+      "tags": [
+        "творческий",
+        "элегантный",
+        "corporate_bold",
+        "синий",
+        "зелёный",
+        "ftc",
+        "презентация"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 66
+    },
+    {
+      "id": "template_00068",
+      "filename": "template_00068.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:56:00.011929",
+      "tags": [
+        "простой",
+        "красный",
+        "modern_minimal",
+        "зелёный",
+        "каталог",
+        "шаблон",
+        "профессиональный"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 67
+    },
+    {
+      "id": "template_00069",
+      "filename": "template_00069.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.052119",
+      "tags": [
+        "elegant_classic",
+        "красный",
+        "оранжевый",
+        "ftc",
+        "каталог",
+        "современный",
+        "профессиональный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 68
+    },
+    {
+      "id": "template_00070",
+      "filename": "template_00070.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:56:00.082829",
+      "tags": [
+        "творческий",
+        "красный",
+        "modern_minimal",
+        "зелёный",
+        "портфолио",
+        "макет",
+        "профессиональный"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 69
+    },
+    {
+      "id": "template_00071",
+      "filename": "template_00071.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.115011",
+      "tags": [
+        "оранжевый",
+        "фиолетовый",
+        "презентация",
+        "minimalist_clean",
+        "детальный",
+        "макет",
+        "современный"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 70
+    },
+    {
+      "id": "template_00072",
+      "filename": "template_00072.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.144634",
+      "tags": [
+        "элегантный",
+        "corporate_bold",
+        "красный",
+        "зелёный",
+        "каталог",
+        "макет",
+        "профессиональный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 71
+    },
+    {
+      "id": "template_00073",
+      "filename": "template_00073.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:56:00.184958",
+      "tags": [
+        "простой",
+        "синий",
+        "creative_artistic",
+        "зелёный",
+        "презентация",
+        "детальный",
+        "шаблон"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 72
+    },
+    {
+      "id": "template_00074",
+      "filename": "template_00074.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.214407",
+      "tags": [
+        "элегантный",
+        "красный",
+        "синий",
+        "modern_minimal",
+        "ftc",
+        "портфолио",
+        "профессиональный"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 73
+    },
+    {
+      "id": "template_00075",
+      "filename": "template_00075.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.245641",
+      "tags": [
+        "элегантный",
+        "фиолетовый",
+        "creative_artistic",
+        "зелёный",
+        "ftc",
+        "презентация",
+        "детальный"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 74
+    },
+    {
+      "id": "template_00076",
+      "filename": "template_00076.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.273846",
+      "tags": [
+        "простой",
+        "tech_focused",
+        "оранжевый",
+        "зелёный",
+        "ftc",
+        "презентация",
+        "яркий"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 75
+    },
+    {
+      "id": "template_00077",
+      "filename": "template_00077.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.305446",
+      "tags": [
+        "синий",
+        "colorful_vibrant",
+        "оранжевый",
+        "портфолио",
+        "детальный",
+        "шаблон",
+        "профессиональный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 76
+    },
+    {
+      "id": "template_00078",
+      "filename": "template_00078.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.335212",
+      "tags": [
+        "элегантный",
+        "красный",
+        "colorful_vibrant",
+        "оранжевый",
+        "портфолио",
+        "макет",
+        "профессиональный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 77
+    },
+    {
+      "id": "template_00079",
+      "filename": "template_00079.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#2E7D32",
+        "secondary": "#FCE4EC",
+        "accent": "#0277BD"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.369871",
+      "tags": [
+        "элегантный",
+        "синий",
+        "фиолетовый",
+        "шаблон",
+        "каталог",
+        "dark_professional",
+        "профессиональный"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 78
+    },
+    {
+      "id": "template_00080",
+      "filename": "template_00080.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:56:00.397451",
+      "tags": [
+        "colorful_vibrant",
+        "фиолетовый",
+        "зелёный",
+        "портфолио",
+        "презентация",
+        "минималистичный",
+        "профессиональный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 79
+    },
+    {
+      "id": "template_00081",
+      "filename": "template_00081.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.433997",
+      "tags": [
+        "красный",
+        "startup_modern",
+        "зелёный",
+        "каталог",
+        "презентация",
+        "современный",
+        "профессиональный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 80
+    },
+    {
+      "id": "template_00082",
+      "filename": "template_00082.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:56:00.472636",
+      "tags": [
+        "красный",
+        "colorful_vibrant",
+        "оранжевый",
+        "портфолио",
+        "презентация",
+        "яркий",
+        "детальный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 81
+    },
+    {
+      "id": "template_00083",
+      "filename": "template_00083.pdf",
+      "layout_type": "creative_artistic",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.502623",
+      "tags": [
+        "простой",
+        "синий",
+        "creative_artistic",
+        "зелёный",
+        "макет",
+        "шаблон",
+        "профессиональный"
+      ],
+      "description": "Творческий дизайн для инновационных проектов",
+      "index": 82
+    },
+    {
+      "id": "template_00084",
+      "filename": "template_00084.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.533627",
+      "tags": [
+        "элегантный",
+        "corporate_bold",
+        "фиолетовый",
+        "зелёный",
+        "каталог",
+        "презентация",
+        "детальный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 83
+    },
+    {
+      "id": "template_00085",
+      "filename": "template_00085.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.566492",
+      "tags": [
+        "творческий",
+        "простой",
+        "фиолетовый",
+        "зелёный",
+        "портфолио",
+        "каталог",
+        "minimalist_clean"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 84
+    },
+    {
+      "id": "template_00086",
+      "filename": "template_00086.pdf",
+      "layout_type": "corporate_bold",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.601108",
+      "tags": [
+        "творческий",
+        "corporate_bold",
+        "фиолетовый",
+        "зелёный",
+        "ftc",
+        "каталог",
+        "современный"
+      ],
+      "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+      "index": 85
+    },
+    {
+      "id": "template_00087",
+      "filename": "template_00087.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.637557",
+      "tags": [
+        "творческий",
+        "фиолетовый",
+        "оранжевый",
+        "портфолио",
+        "minimalist_clean",
+        "шаблон",
+        "профессиональный"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 86
+    },
+    {
+      "id": "template_00088",
+      "filename": "template_00088.pdf",
+      "layout_type": "nature_inspired",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:56:00.672595",
+      "tags": [
+        "красный",
+        "синий",
+        "nature_inspired",
+        "презентация",
+        "яркий",
+        "минималистичный",
+        "шаблон"
+      ],
+      "description": "Дизайн вдохновлённый природой с органичными формами",
+      "index": 87
+    },
+    {
+      "id": "template_00089",
+      "filename": "template_00089.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.700808",
+      "tags": [
+        "элегантный",
+        "startup_modern",
+        "фиолетовый",
+        "оранжевый",
+        "портфолио",
+        "современный",
+        "шаблон"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 88
+    },
+    {
+      "id": "template_00090",
+      "filename": "template_00090.pdf",
+      "layout_type": "elegant_classic",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:56:00.735401",
+      "tags": [
+        "элегантный",
+        "elegant_classic",
+        "синий",
+        "оранжевый",
+        "портфолио",
+        "каталог",
+        "профессиональный"
+      ],
+      "description": "Классический элегантный стиль с традиционными элементами",
+      "index": 89
+    },
+    {
+      "id": "template_00091",
+      "filename": "template_00091.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#5E35B1",
+        "secondary": "#E0F2F1",
+        "accent": "#F57C00"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:56:00.775053",
+      "tags": [
+        "синий",
+        "colorful_vibrant",
+        "фиолетовый",
+        "ftc",
+        "каталог",
+        "детальный",
+        "современный"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 90
+    },
+    {
+      "id": "template_00092",
+      "filename": "template_00092.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#D32F2F",
+        "secondary": "#F1F8E9",
+        "accent": "#1976D2"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:56:00.807580",
+      "tags": [
+        "простой",
+        "startup_modern",
+        "фиолетовый",
+        "оранжевый",
+        "каталог",
+        "шаблон",
+        "профессиональный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 91
+    },
+    {
+      "id": "template_00093",
+      "filename": "template_00093.pdf",
+      "layout_type": "modern_minimal",
+      "colors": {
+        "primary": "#00796B",
+        "secondary": "#F1F8E9",
+        "accent": "#7B1FA2"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:00.838979",
+      "tags": [
+        "оранжевый",
+        "modern_minimal",
+        "зелёный",
+        "яркий",
+        "макет",
+        "современный",
+        "шаблон"
+      ],
+      "description": "Современный минималистичный дизайн с фокусом на контент",
+      "index": 92
+    },
+    {
+      "id": "template_00094",
+      "filename": "template_00094.pdf",
+      "layout_type": "minimalist_clean",
+      "colors": {
+        "primary": "#455A64",
+        "secondary": "#F3E5F5",
+        "accent": "#FFC400"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:56:00.881189",
+      "tags": [
+        "элегантный",
+        "красный",
+        "оранжевый",
+        "каталог",
+        "minimalist_clean",
+        "презентация",
+        "профессиональный"
+      ],
+      "description": "Чистый дизайн с максимальной простотой",
+      "index": 93
+    },
+    {
+      "id": "template_00095",
+      "filename": "template_00095.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#C62828",
+        "secondary": "#F3E5F5",
+        "accent": "#FFB300"
+      },
+      "pages": 15,
+      "created_at": "2026-01-14T20:56:00.920854",
+      "tags": [
+        "творческий",
+        "простой",
+        "синий",
+        "colorful_vibrant",
+        "оранжевый",
+        "макет",
+        "шаблон"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 94
+    },
+    {
+      "id": "template_00096",
+      "filename": "template_00096.pdf",
+      "layout_type": "nature_inspired",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 14,
+      "created_at": "2026-01-14T20:56:00.957646",
+      "tags": [
+        "оранжевый",
+        "зелёный",
+        "nature_inspired",
+        "каталог",
+        "макет",
+        "современный",
+        "профессиональный"
+      ],
+      "description": "Дизайн вдохновлённый природой с органичными формами",
+      "index": 95
+    },
+    {
+      "id": "template_00097",
+      "filename": "template_00097.pdf",
+      "layout_type": "colorful_vibrant",
+      "colors": {
+        "primary": "#1E88E5",
+        "secondary": "#FFF3E0",
+        "accent": "#FF6F00"
+      },
+      "pages": 11,
+      "created_at": "2026-01-14T20:56:00.984714",
+      "tags": [
+        "творческий",
+        "простой",
+        "красный",
+        "colorful_vibrant",
+        "оранжевый",
+        "ftc",
+        "презентация"
+      ],
+      "description": "Яркий многоцветный дизайн для молодёжных проектов",
+      "index": 96
+    },
+    {
+      "id": "template_00098",
+      "filename": "template_00098.pdf",
+      "layout_type": "startup_modern",
+      "colors": {
+        "primary": "#6A1B9A",
+        "secondary": "#E8F5E9",
+        "accent": "#E53935"
+      },
+      "pages": 13,
+      "created_at": "2026-01-14T20:56:01.016833",
+      "tags": [
+        "элегантный",
+        "красный",
+        "startup_modern",
+        "оранжевый",
+        "портфолио",
+        "презентация",
+        "минималистичный"
+      ],
+      "description": "Современный дизайн для стартапов и инновационных компаний",
+      "index": 97
+    },
+    {
+      "id": "template_00099",
+      "filename": "template_00099.pdf",
+      "layout_type": "tech_focused",
+      "colors": {
+        "primary": "#004D7A",
+        "secondary": "#EFF7FA",
+        "accent": "#FF6B6B"
+      },
+      "pages": 10,
+      "created_at": "2026-01-14T20:56:01.041694",
+      "tags": [
+        "tech_focused",
+        "оранжевый",
+        "фиолетовый",
+        "ftc",
+        "яркий",
+        "современный",
+        "шаблон"
+      ],
+      "description": "Технологичный стиль для IT проектов и стартапов",
+      "index": 98
+    },
+    {
+      "id": "template_00100",
+      "filename": "template_00100.pdf",
+      "layout_type": "dark_professional",
+      "colors": {
+        "primary": "#0097A7",
+        "secondary": "#FFF8E1",
+        "accent": "#C62828"
+      },
+      "pages": 12,
+      "created_at": "2026-01-14T20:56:01.072170",
+      "tags": [
+        "оранжевый",
+        "фиолетовый",
+        "портфолио",
+        "ftc",
+        "яркий",
+        "современный",
+        "dark_professional"
+      ],
+      "description": "Профессиональный тёмный дизайн для солидных организаций",
+      "index": 99
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "template_00048",
+  "filename": "template_00048.pdf",
+  "layout_type": "startup_modern",
+  "colors": {
+    "primary": "#D32F2F",
+    "secondary": "#F1F8E9",
+    "accent": "#1976D2"
+  },
+  "pages": 14,
+  "created_at": "2026-01-14T20:55:59.381943",
+  "tags": [
+    "красный",
+    "синий",
+    "startup_modern",
+    "портфолио",
+    "каталог",
+    "детальный",
+    "профессиональный"
+  ],
+  "description": "Современный дизайн для стартапов и инновационных компаний",
+  "index": 47
+}

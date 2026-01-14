@@ -313,6 +313,41 @@ def scan_portfolios():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/download-template/<portfolio_id>', methods=['GET'])
+def download_template_pdf(portfolio_id):
+    """Скачивание PDF шаблона"""
+    try:
+        # Генерируем PDF портфолио
+        from reportlab.lib.pagesizes import letter
+        from reportlab.lib.units import inch
+        from reportlab.pdfgen import canvas
+        from io import BytesIO
+        
+        pdf_buffer = BytesIO()
+        c = canvas.Canvas(pdf_buffer, pagesize=letter)
+        width, height = letter
+        
+        # Заголовок
+        c.setFont("Helvetica-Bold", 24)
+        c.drawString(inch, height - inch, "Portfolio - " + portfolio_id)
+        
+        # Информация
+        c.setFont("Helvetica", 12)
+        c.drawString(inch, height - 1.5*inch, "Generated portfolio")
+        c.drawString(inch, height - 2*inch, "FTC Portfolio Constructor")
+        
+        c.save()
+        pdf_buffer.seek(0)
+        
+        return send_file(
+            pdf_buffer,
+            mimetype='application/pdf',
+            as_attachment=True,
+            download_name=f'portfolio-{portfolio_id}.pdf'
+        )
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Проверка здоровья сервера"""

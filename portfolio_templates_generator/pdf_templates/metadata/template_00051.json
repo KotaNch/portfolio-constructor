@@ -1,0 +1,23 @@
+{
+  "id": "template_00051",
+  "filename": "template_00051.pdf",
+  "layout_type": "corporate_bold",
+  "colors": {
+    "primary": "#6A1B9A",
+    "secondary": "#E8F5E9",
+    "accent": "#E53935"
+  },
+  "pages": 11,
+  "created_at": "2026-01-14T20:55:59.472194",
+  "tags": [
+    "творческий",
+    "corporate_bold",
+    "красный",
+    "синий",
+    "каталог",
+    "макет",
+    "современный"
+  ],
+  "description": "Корпоративный стиль с смелыми цветовыми акцентами",
+  "index": 50
+}

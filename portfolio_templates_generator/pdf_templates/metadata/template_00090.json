@@ -1,0 +1,23 @@
+{
+  "id": "template_00090",
+  "filename": "template_00090.pdf",
+  "layout_type": "elegant_classic",
+  "colors": {
+    "primary": "#5E35B1",
+    "secondary": "#E0F2F1",
+    "accent": "#F57C00"
+  },
+  "pages": 14,
+  "created_at": "2026-01-14T20:56:00.735401",
+  "tags": [
+    "элегантный",
+    "elegant_classic",
+    "синий",
+    "оранжевый",
+    "портфолио",
+    "каталог",
+    "профессиональный"
+  ],
+  "description": "Классический элегантный стиль с традиционными элементами",
+  "index": 89
+}

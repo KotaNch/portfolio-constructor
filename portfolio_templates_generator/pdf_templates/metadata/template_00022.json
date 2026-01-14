@@ -1,0 +1,23 @@
+{
+  "id": "template_00022",
+  "filename": "template_00022.pdf",
+  "layout_type": "startup_modern",
+  "colors": {
+    "primary": "#004D7A",
+    "secondary": "#EFF7FA",
+    "accent": "#FF6B6B"
+  },
+  "pages": 15,
+  "created_at": "2026-01-14T20:55:58.496813",
+  "tags": [
+    "элегантный",
+    "startup_modern",
+    "оранжевый",
+    "зелёный",
+    "ftc",
+    "яркий",
+    "макет"
+  ],
+  "description": "Современный дизайн для стартапов и инновационных компаний",
+  "index": 21
+}

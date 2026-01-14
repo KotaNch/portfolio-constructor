@@ -1,0 +1,23 @@
+{
+  "id": "template_00040",
+  "filename": "template_00040.pdf",
+  "layout_type": "tech_focused",
+  "colors": {
+    "primary": "#004D7A",
+    "secondary": "#EFF7FA",
+    "accent": "#FF6B6B"
+  },
+  "pages": 15,
+  "created_at": "2026-01-14T20:55:59.105245",
+  "tags": [
+    "простой",
+    "красный",
+    "элегантный",
+    "tech_focused",
+    "оранжевый",
+    "ftc",
+    "макет"
+  ],
+  "description": "Технологичный стиль для IT проектов и стартапов",
+  "index": 39
+}
