@@ -1,0 +1,348 @@
+{
+  "portfolios": [
+    {
+      "team_number": "6323",
+      "team_name": "The Pink Team",
+      "achievement": "N/A",
+      "portfolio_type": "ug",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/6323-ug.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/6323-ug.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "23396",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/23396-cs.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/23396-cs.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "1002",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/1002-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/1002-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "1002",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/1002-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/1002-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "10179",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/10179-cs.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/10179-cs.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "10183",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/10183-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/10183-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "10355",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/10355-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/10355-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "11468",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/11468-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/11468-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "12051",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/12051-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/12051-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "12635",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/12635-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/12635-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "14270",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/14270-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/14270-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "16461",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/16461-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/16461-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "18317",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/18317-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/18317-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "20744",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/20744-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/20744-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "21579",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/21579-cs.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/21579-cs.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "252",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/252-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/252-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "4042",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/4042-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/4042-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "516",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ug",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/516-ug.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/516-ug.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "6165",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/6165-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/6165-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "701",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/701-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/701-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "7444",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/7444-cs.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/7444-cs.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "7444",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ug",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/7444-ug.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/7444-ug.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "7842",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/7842-pp.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/7842-pp.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "7842",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ug",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/7842-ug.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/7842-ug.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "8300",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ff",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/8300-ff.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/8300-ff.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "9527",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ug",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/9527-ug.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/9527-ug.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "9974",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "ug",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/9974-ug.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/9974-ug.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "24331",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/24331-cs.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/24331-cs.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "19706",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/19706-cs.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/19706-cs.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "23511",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/23511-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/23511-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "24331",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/24331-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/24331-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "22581",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/22581-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/22581-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "24478",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/24478-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/24478-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "27238",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/27238-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/27238-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "16021",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/16021-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/16021-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "3747",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/3747-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/3747-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "14596",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/14596-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/14596-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    },
+    {
+      "team_number": "22105",
+      "team_name": "Unknown",
+      "achievement": "N/A",
+      "portfolio_type": "itd",
+      "pdf_url": "https://cdn.hivemindrobotics.net/portfolios/22105-itd.pdf",
+      "thumbnail_url": "https://cdn.hivemindrobotics.net/thumbnails/22105-itd.pdf",
+      "page_url": "https://portfolios.hivemindrobotics.net/ftc"
+    }
+  ],
+  "total_count": 38,
+  "timestamp": "2026-01-13 20:36:27.028480"
+}

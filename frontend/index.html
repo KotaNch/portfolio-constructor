@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTC Portfolio Constructor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>🤖 FTC Portfolio Constructor</h1>
+                <p>Генерация портфолио команд FTC соревнований</p>
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-btn active" data-tab="generate">Генератор</button>
+                <button class="nav-btn" data-tab="admin">Администратор</button>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <!-- TAB 1: ГЕНЕРАТОР МАКЕТОВ -->
+            <section id="generate-tab" class="tab-content active">
+                <div class="generator-container">
+                    <h2>Генератор макетов портфолио</h2>
+                    <form id="portfolioForm">
+                        <div class="form-group">
+                            <label for="prompt">Опишите требования к портфолио:</label>
+                            <textarea 
+                                id="prompt" 
+                                name="prompt" 
+                                placeholder="Пример: Нужен современный и минималистичный дизайн с секциями для команды, проектов и галереи..."
+                                rows="5"
+                                class="form-input"
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span id="buttonText">Сгенерировать макеты</span>
+                            <span id="loadingSpinner" class="spinner" style="display: none;"></span>
+                        </button>
+                    </form>
+
+                    <section id="resultsSection" class="results-section" style="display: none;">
+                        <h3>Сгенерированные макеты</h3>
+                        <div id="portfolioResults" class="portfolio-grid">
+                            <!-- Результаты генерации -->
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- TAB 2: АДМИНИСТРАТОР -->
+            <section id="admin-tab" class="tab-content" style="display: none;">
+                <div class="admin-container">
+                    <h2>Администратор</h2>
+                    <div class="admin-section">
+                        <h3>Управление базой данных портфолио</h3>
+                        <button id="scanBtn" class="btn btn-warning">
+                            <span id="scanText">Сканировать сайт и обновить данные</span>
+                            <span id="scanSpinner" class="spinner" style="display: none;"></span>
+                        </button>
+                        <p class="info-text" id="statusInfo">Нажмите кнопку для сканирования новых портфолио с сайта</p>
+                        <div id="scanResult" style="display: none;">
+                            <p id="scanMessage"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            <div id="successMessage" class="success-message" style="display: none;"></div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 FTC Portfolio Constructor | Исходные данные с <a href="https://portfolios.hivemindrobotics.net/ftc" target="_blank">Hivemind Robotics</a></p>
+        </footer>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПОРТФОЛИО -->
+    <div id="portfolioModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modalBody">
+                <!-- Содержимое портфолио -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

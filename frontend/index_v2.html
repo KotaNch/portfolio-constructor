@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio Generator v2.0 - Design Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #51cf66;
+            --danger: #ff6b6b;
+            --warning: #ffd93d;
+            --bg-light: #f5f7fa;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar h1 {
+            font-size: 1.5em;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar-status {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+            position: relative;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-button.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-button:hover {
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .section h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 20px 0 10px 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button.secondary {
+            background: #f0f0f0;
+            color: var(--primary);
+        }
+
+        .button.success {
+            background: linear-gradient(135deg, var(--success) 0%, #40c96e 100%);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.secondary {
+            background: var(--accent);
+        }
+
+        .badge.success {
+            background: var(--success);
+        }
+
+        .design-preview {
+            margin-bottom: 15px;
+        }
+
+        .color-samples {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .color-sample {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .color-sample:hover {
+            transform: scale(1.1);
+        }
+
+        .confidence-bar {
+            width: 100%;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .card-actions button {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 0.85em;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .compare-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .compare-section {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-nav {
+                flex-direction: column;
+                border-bottom: none;
+            }
+
+            .tab-button {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                padding-left: 15px;
+                margin-bottom: 0;
+            }
+
+            .tab-button.active {
+                border-left-color: var(--primary);
+                border-bottom-color: transparent;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1>🎨 AI Portfolio Studio</h1>
+            <div class="navbar-status">
+                <span id="status-indicator">🟢 Online</span> | 
+                <span id="portfolio-count">Загрузка...</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Вкладки -->
+        <div class="tabs-nav">
+            <button class="tab-button active" onclick="switchTab('ai-mix')">🤖 AI Mix Designer</button>
+            <button class="tab-button" onclick="switchTab('search')">🔍 Search Portfolios</button>
+            <button class="tab-button" onclick="switchTab('generate')">✨ Generate Layouts</button>
+            <button class="tab-button" onclick="switchTab('admin')">⚙️ Admin</button>
+        </div>
+
+        <!-- TAB 1: AI Mix Designer -->
+        <div id="ai-mix" class="tab-content active">
+            <div class="section">
+                <h2>🤖 AI Design Generator</h2>
+                <p style="margin-bottom: 20px; color: #666;">
+                    Нейросеть анализирует успешные портфолио и генерирует новые уникальные комбинации дизайна.
+                    Каждый дизайн - это микс лучших элементов из реальных портфолио.
+                </p>
+
+                <div class="input-group">
+                    <label for="ai-count">Количество дизайнов для генерации:</label>
+                    <input type="number" id="ai-count" min="1" max="20" value="5">
+                </div>
+
+                <button class="button success" onclick="generateAIMix()">
+                    Генерировать дизайны 🚀
+                </button>
+
+                <div id="ai-message" class="message"></div>
+                <div id="ai-loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Нейросеть генерирует дизайны...</p>
+                </div>
+            </div>
+
+            <div id="ai-results" class="grid" style="margin-top: 30px;"></div>
+        </div>
+
+        <!-- TAB 2: Search Portfolios -->
+        <div id="search" class="tab-content">
+            <div class="section">
+                <h2>🔍 Поиск Портфолио</h2>
+
+                <div class="input-group">
+                    <label for="search-query">Поиск по названию команды или типу:</label>
+                    <input type="text" id="search-query" placeholder="Например: Tech, Robot, Design...">
+                </div>
+
+                <button class="button" onclick="searchPortfolios()">
+                    Поиск
+                </button>
+
+                <div id="search-message" class="message"></div>
+            </div>
+
+            <div id="search-results" class="grid" style="margin-top: 30px;"></div>
+        </div>
+
+        <!-- TAB 3: Generate Layouts -->
+        <div id="generate" class="tab-content">
+            <div class="section">
+                <h2>✨ Генерация Макетов</h2>
+
+                <div class="input-group">
+                    <label for="layout-prompt">Описание портфолио:</label>
+                    <textarea id="layout-prompt" placeholder="Опишите, какой тип портфолио вам нужен, например: минималистичный, современный, яркий..."></textarea>
+                </div>
+
+                <button class="button" onclick="generateLayouts()">
+                    Сгенерировать макеты
+                </button>
+
+                <div id="generate-message" class="message"></div>
+            </div>
+
+            <div id="generate-results" class="grid" style="margin-top: 30px;"></div>
+        </div>
+
+        <!-- TAB 4: Admin -->
+        <div id="admin" class="tab-content">
+            <div class="section">
+                <h2>⚙️ Администрирование</h2>
+
+                <h3>Статистика</h3>
+                <div id="stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;"></div>
+
+                <h3>Обновление базы данных</h3>
+                <p style="margin-bottom: 15px; color: #666;">
+                    Сканирует сайт и обновляет список портфолио.
+                </p>
+                <button class="button secondary" onclick="scanPortfolios()">
+                    Сканировать сайт
+                </button>
+
+                <div id="admin-message" class="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal для просмотра дизайна -->
+    <div id="design-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; overflow-y: auto; padding: 20px;">
+        <div style="background: white; border-radius: 12px; margin: 20px auto; max-width: 900px; padding: 30px;">
+            <button onclick="closeModal()" style="float: right; background: none; border: none; font-size: 1.5em; cursor: pointer;">✕</button>
+            
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Предпросмотр дизайна</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                <div>
+                    <h3>Информация о дизайне</h3>
+                    <div id="modal-info" style="color: #666; line-height: 1.8;"></div>
+                </div>
+                <div>
+                    <h3>Цветовая схема</h3>
+                    <div id="modal-colors"></div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <button class="button" onclick="downloadDesignHTML()" style="margin-right: 10px;">📄 Скачать HTML</button>
+                <button class="button success" onclick="downloadDesignPDF()">📥 Скачать PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        let currentDesign = null;
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus();
+            setInterval(updateStatus, 30000); // Обновляем каждые 30 сек
+        });
+
+        function updateStatus() {
+            fetch(`${API_URL}/health`)
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('portfolio-count').textContent = 
+                        `Портфолио: ${data.total_portfolios}`;
+                })
+                .catch(() => {
+                    document.getElementById('status-indicator').textContent = '🔴 Offline';
+                });
+        }
+
+        function switchTab(tabName) {
+            // Скрываем все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Удаляем активный класс с кнопок
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Показываем нужную вкладку
+            document.getElementById(tabName).classList.add('active');
+            
+            // Добавляем активный класс кнопке
+            event.target.classList.add('active');
+        }
+
+        async function generateAIMix() {
+            const count = document.getElementById('ai-count').value;
+            const messageEl = document.getElementById('ai-message');
+            const loadingEl = document.getElementById('ai-loading');
+            const resultsEl = document.getElementById('ai-results');
+
+            try {
+                messageEl.classList.remove('show');
+                loadingEl.classList.add('show');
+                resultsEl.innerHTML = '';
+
+                const response = await fetch(`${API_URL}/generate-ai-mix`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ count: parseInt(count) })
+                });
+
+                const data = await response.json();
+                loadingEl.classList.remove('show');
+
+                if (data.success) {
+                    displayAIDesigns(data.designs);
+                    showMessage('ai-message', 'success', `✓ Сгенерировано ${data.count} дизайнов!`);
+                } else {
+                    showMessage('ai-message', 'error', `Ошибка: ${data.error}`);
+                }
+            } catch (error) {
+                loadingEl.classList.remove('show');
+                showMessage('ai-message', 'error', `Ошибка: ${error.message}`);
+            }
+        }
+
+        function displayAIDesigns(designs) {
+            const resultsEl = document.getElementById('ai-results');
+            resultsEl.innerHTML = '';
+
+            designs.forEach(design => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.setProperty('--primary', design.colors.primary);
+                card.style.setProperty('--secondary', design.colors.secondary);
+
+                const confidence = (design.pattern_confidence * 100).toFixed(0);
+
+                card.innerHTML = `
+                    <div class="card-header" style="background: linear-gradient(135deg, ${design.colors.primary} 0%, ${design.colors.secondary} 100%);">
+                        Design #${design.id.split('_')[1]}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">${design.name}</div>
+                        <div class="card-text">
+                            <strong>Стиль:</strong> ${design.pattern}
+                        </div>
+                        <div class="card-text" style="font-size: 0.9em; color: #999;">
+                            ${design.pattern_desc}
+                        </div>
+                        
+                        <div class="color-samples">
+                            <div class="color-sample" style="background: ${design.colors.primary};" title="${design.colors.primary}"></div>
+                            <div class="color-sample" style="background: ${design.colors.secondary};" title="${design.colors.secondary}"></div>
+                            <div class="color-sample" style="background: ${design.colors.accent};" title="${design.colors.accent}"></div>
+                        </div>
+                        
+                        <div style="font-size: 0.9em; color: #666; margin-bottom: 10px;">
+                            Уверенность AI: <strong>${confidence}%</strong>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: ${confidence}%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <button class="button" onclick="previewDesign('${design.id}', ${JSON.stringify(design).replace(/'/g, '&apos;')})" style="flex: 1;">👁️ Просмотр</button>
+                            <button class="button secondary" onclick="downloadDesignPDF(${JSON.stringify(design).replace(/'/g, '&apos;')})" style="flex: 1;">📥 PDF</button>
+                        </div>
+                    </div>
+                `;
+
+                resultsEl.appendChild(card);
+            });
+        }
+
+        async function searchPortfolios() {
+            const query = document.getElementById('search-query').value;
+            const messageEl = document.getElementById('search-message');
+            const resultsEl = document.getElementById('search-results');
+
+            try {
+                const response = await fetch(`${API_URL}/search-ftc?q=${encodeURIComponent(query)}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    displaySearchResults(data.results);
+                    showMessage('search-message', 'success', `✓ Найдено: ${data.count}`);
+                } else {
+                    showMessage('search-message', 'error', 'Ошибка поиска');
+                }
+            } catch (error) {
+                showMessage('search-message', 'error', error.message);
+            }
+        }
+
+        function displaySearchResults(portfolios) {
+            const resultsEl = document.getElementById('search-results');
+            resultsEl.innerHTML = '';
+
+            portfolios.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                card.innerHTML = `
+                    <div class="card-header" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
+                        Team ${p.team_number}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">${p.team_name}</div>
+                        <div class="badge">${p.achievement}</div>
+                        <div class="badge secondary">${p.portfolio_type}</div>
+                        <div class="card-actions" style="margin-top: 15px;">
+                            <button class="button secondary" onclick="downloadOriginalPDF('${p.team_number}', '${p.portfolio_type}')" style="flex: 1;">📥 PDF</button>
+                        </div>
+                    </div>
+                `;
+
+                resultsEl.appendChild(card);
+            });
+        }
+
+        async function generateLayouts() {
+            const prompt = document.getElementById('layout-prompt').value;
+            const messageEl = document.getElementById('generate-message');
+            const resultsEl = document.getElementById('generate-results');
+
+            try {
+                const response = await fetch(`${API_URL}/generate-portfolio`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt, count: 3 })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayLayouts(data.layouts);
+                    showMessage('generate-message', 'success', '✓ Макеты сгенерированы!');
+                } else {
+                    showMessage('generate-message', 'error', data.error);
+                }
+            } catch (error) {
+                showMessage('generate-message', 'error', error.message);
+            }
+        }
+
+        function displayLayouts(layouts) {
+            const resultsEl = document.getElementById('generate-results');
+            resultsEl.innerHTML = '';
+
+            layouts.forEach((layout, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const relevance = (layout.relevance_score * 100).toFixed(0);
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        Layout ${idx + 1}
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">${layout.name}</div>
+                        <div style="margin-bottom: 15px;">
+                            ${layout.tags.map(t => `<span class="badge">${t}</span>`).join('')}
+                        </div>
+                        <div style="font-size: 0.9em; color: #666;">
+                            <strong>Релевантность:</strong> ${relevance}%
+                        </div>
+                    </div>
+                `;
+
+                resultsEl.appendChild(card);
+            });
+        }
+
+        async function scanPortfolios() {
+            const messageEl = document.getElementById('admin-message');
+
+            try {
+                const response = await fetch(`${API_URL}/scan-portfolios`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('admin-message', 'success', `✓ ${data.message} (${data.count} портфолио)`);
+                    updateStatus();
+                } else {
+                    showMessage('admin-message', 'error', data.error);
+                }
+            } catch (error) {
+                showMessage('admin-message', 'error', error.message);
+            }
+        }
+
+        function previewDesign(id, design) {
+            currentDesign = design;
+            
+            const infoEl = document.getElementById('modal-info');
+            const colorsEl = document.getElementById('modal-colors');
+
+            infoEl.innerHTML = `
+                <p><strong>Название:</strong> ${design.name}</p>
+                <p><strong>Стиль:</strong> ${design.pattern}</p>
+                <p><strong>Описание:</strong> ${design.pattern_desc}</p>
+                <p><strong>Шрифты:</strong> ${design.fonts.heading} (заголовки), ${design.fonts.body} (текст)</p>
+                <p><strong>Уверенность AI:</strong> ${(design.pattern_confidence * 100).toFixed(0)}%</p>
+            `;
+
+            colorsEl.innerHTML = `
+                <div class="color-samples" style="flex-direction: column;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div class="color-sample" style="background: ${design.colors.primary}; margin-right: 10px;"></div>
+                        <div><strong>Основной:</strong> ${design.colors.primary}</div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div class="color-sample" style="background: ${design.colors.secondary}; margin-right: 10px;"></div>
+                        <div><strong>Вторичный:</strong> ${design.colors.secondary}</div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div class="color-sample" style="background: ${design.colors.accent}; margin-right: 10px;"></div>
+                        <div><strong>Акцент:</strong> ${design.colors.accent}</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('design-modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('design-modal').style.display = 'none';
+        }
+
+        async function downloadDesignPDF(design = null) {
+            const designToDownload = design || currentDesign;
+            if (!designToDownload) return;
+
+            try {
+                const response = await fetch(`${API_URL}/design-to-pdf`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(designToDownload)
+                });
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${designToDownload.name.replace(/ /g, '_')}.pdf`;
+                a.click();
+            } catch (error) {
+                alert(`Ошибка: ${error.message}`);
+            }
+        }
+
+        async function downloadDesignHTML() {
+            if (!currentDesign) return;
+
+            try {
+                const response = await fetch(`${API_URL}/design-to-html`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(currentDesign)
+                });
+
+                const data = await response.json();
+                const blob = new Blob([data.html], { type: 'text/html' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${currentDesign.name.replace(/ /g, '_')}.html`;
+                a.click();
+            } catch (error) {
+                alert(`Ошибка: ${error.message}`);
+            }
+        }
+
+        async function downloadOriginalPDF(teamNumber, portfolioType) {
+            try {
+                window.location.href = `${API_URL}/download-portfolio/${teamNumber}-${portfolioType}`;
+            } catch (error) {
+                alert(`Ошибка: ${error.message}`);
+            }
+        }
+
+        function showMessage(elementId, type, message) {
+            const el = document.getElementById(elementId);
+            el.className = `message ${type} show`;
+            el.textContent = message;
+            setTimeout(() => el.classList.remove('show'), 5000);
+        }
+    </script>
+</body>
+</html>

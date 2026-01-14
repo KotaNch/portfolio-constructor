@@ -1,0 +1,16 @@
+{
+  "total_designs": 10,
+  "designs": [
+    "generated_1",
+    "generated_2",
+    "generated_3",
+    "generated_4",
+    "generated_5",
+    "generated_6",
+    "generated_7",
+    "generated_8",
+    "generated_9",
+    "generated_10"
+  ],
+  "output_directory": "C:\\Users\\ilaci\\portfolio constructor\\portfolio-constructor\\backend\\generated_portfolios"
+}
