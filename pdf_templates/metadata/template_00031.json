@@ -1,0 +1,23 @@
+{
+  "id": "template_00031",
+  "filename": "template_00031.pdf",
+  "layout_type": "minimalist_clean",
+  "colors": {
+    "primary": "#1E88E5",
+    "secondary": "#FFF3E0",
+    "accent": "#FF6F00"
+  },
+  "pages": 11,
+  "created_at": "2026-01-14T19:49:53.505596",
+  "tags": [
+    "зелёный",
+    "фиолетовый",
+    "детальный",
+    "каталог",
+    "minimalist_clean",
+    "макет",
+    "минималистичный"
+  ],
+  "description": "Чистый дизайн с максимальной простотой",
+  "index": 30
+}

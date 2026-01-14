@@ -1,0 +1,23 @@
+{
+  "id": "template_00022",
+  "filename": "template_00022.pdf",
+  "layout_type": "nature_inspired",
+  "colors": {
+    "primary": "#D32F2F",
+    "secondary": "#F1F8E9",
+    "accent": "#1976D2"
+  },
+  "pages": 12,
+  "created_at": "2026-01-14T19:49:53.378628",
+  "tags": [
+    "портфолио",
+    "простой",
+    "синий",
+    "nature_inspired",
+    "оранжевый",
+    "презентация",
+    "яркий"
+  ],
+  "description": "Дизайн вдохновлённый природой с органичными формами",
+  "index": 21
+}

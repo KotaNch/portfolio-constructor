@@ -1,0 +1,23 @@
+{
+  "id": "template_00062",
+  "filename": "template_00062.pdf",
+  "layout_type": "tech_focused",
+  "colors": {
+    "primary": "#004D7A",
+    "secondary": "#EFF7FA",
+    "accent": "#FF6B6B"
+  },
+  "pages": 15,
+  "created_at": "2026-01-14T19:49:53.991706",
+  "tags": [
+    "tech_focused",
+    "зелёный",
+    "каталог",
+    "элегантный",
+    "оранжевый",
+    "презентация",
+    "творческий"
+  ],
+  "description": "Технологичный стиль для IT проектов и стартапов",
+  "index": 61
+}
