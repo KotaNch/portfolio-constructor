@@ -13,6 +13,11 @@ FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path='')
 CORS(app)
 
+from recommender import build_recommender
+
+# Initialize recommender
+recommender = build_recommender()
+
 # Инициализация генератора портфолио с поддержкой FTC данных
 generator = PortfolioGenerator(use_ftc_data=True)
 visualizer = PortfolioDesignVisualizer()
@@ -357,6 +362,44 @@ def health_check():
         'ftc_portfolios_loaded': ftc_count > 0,
         'total_ftc_portfolios': ftc_count
     }), 200
+
+
+
+@app.route('/api/recommend', methods=['POST'])
+def api_recommend():
+    """
+    Recommend top N portfolios for a given prompt, optional tags and design adjectives.
+    Payload: { "prompt": "...", "tags": ["tag1","tag2"], "design_adjectives": ["minimal","blue"], "top_n": 3 }
+    """
+    try:
+        payload = request.get_json(force=True)
+        prompt = payload.get('prompt','')
+        tags = payload.get('tags', [])
+        design = payload.get('design_adjectives', [])
+        top_n = int(payload.get('top_n', 3))
+        weights = payload.get('weights')  # optional dict
+
+        results = recommender.recommend(prompt, user_tags=tags, user_design_adjs=design, top_n=top_n, weights=weights)
+        # prepare response
+        out = []
+        for r in results:
+            m = r['metadata']
+            out.append({
+                'id': r['id'],
+                'team_name': r.get('team_name'),
+                'score': r['score'],
+                'components': r['components'],
+                'pdf_url': r['pdf_url'],
+                'thumbnail_url': r['thumbnail_url'],
+                'description': m.get('description',''),
+                'tags': m.get('tags', []),
+                'design_adjectives_en': m.get('design_adjectives_en', []),
+                'design_adjectives_ru': m.get('design_adjectives_ru', []),
+                'templates': m.get('templates', [])
+            })
+        return jsonify({'results': out}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

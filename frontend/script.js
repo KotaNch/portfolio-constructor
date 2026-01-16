@@ -1,514 +1,406 @@
-/* RED LOTUS - Interactive Script with Animations */
+// script.js - Red Lotus frontend (robust + UI improvements)
+// Backend-first, safe fallbacks, and UI: thumbnail contain + tall input + "Подробнее" toggle.
 
-const API_URL = 'http://localhost:5000/api';
-const TEMPLATES_API = 'http://localhost:5001';
+const API_BASE = ''; // relative origin
+const RECOMMEND_ENDPOINT = '/api/recommend';
+const PORTFOLIOS_ENDPOINT = '/api/portfolios';
+const LOCAL_FALLBACK_JSON = 'data/final_portfolios.json';
 
-let currentPortfolio = null;
-let currentTemplate = null;
+const EMBEDDED_FALLBACK = {
+  "portfolios": [
+    {
+      "id": "sample-1",
+      "team_number": "0001",
+      "team_name": "Demo Team",
+      "achievement": "N/A",
+      "portfolio_type": "pp",
+      "pdf_url": "https://example.com/sample1.pdf",
+      "thumbnail_url": "https://via.placeholder.com/640x400.png?text=Demo+1",
+      "description": "Демо-портфолио: минималистичный макет, красные акценты. Полный текст для демонстрации работы кнопки Подробнее. Здесь больше описания, которое должно сворачиваться и раскрываться по кнопке.",
+      "tags": ["minimal", "red", "teams"],
+      "templates": ["https://example.com/sample1-template.pdf"]
+    },
+    {
+      "id": "sample-2",
+      "team_number": "0002",
+      "team_name": "Demo Team 2",
+      "achievement": "N/A",
+      "portfolio_type": "cs",
+      "pdf_url": "https://example.com/sample2.pdf",
+      "thumbnail_url": "https://via.placeholder.com/640x400.png?text=Demo+2",
+      "description": "Демо-портфолио: технический дизайн, графики и CAD-скетчи. Короткое описание.",
+      "tags": ["technical","cad"],
+      "templates": ["https://example.com/sample2-template.pdf"]
+    }
+  ]
+};
 
-// =============== ИНИЦИАЛИЗАЦИЯ ===============
 document.addEventListener('DOMContentLoaded', () => {
-    initializeUI();
-    checkBackendConnection();
-    addInteractiveEffects();
+  initializeUI();
+  checkBackendConnection();
 });
 
 function initializeUI() {
-    // Вкладки с интерактивностью
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = e.currentTarget;
-            const tabName = target.dataset.tab;
-            switchTab(tabName);
-            
-            // Визуальный эффект клика
-            rippleEffect(e);
-        });
-        
-        // Подсвечивание при наведении
-        btn.addEventListener('mouseenter', () => {
-            btn.style.transform = 'scale(1.05)';
-        });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'scale(1)';
-        });
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tabName = btn.dataset.tab;
+      switchTab(tabName);
+      rippleEffect(e);
     });
-    
-    // ГЕНЕРАТОР
-    document.getElementById('portfolioForm').addEventListener('submit', generatePortfolios);
-    
-    // ШАБЛОНЫ
-    document.getElementById('templateSearch').addEventListener('input', (e) => {
-        e.target.classList.add('active-input');
-        searchTemplates(e);
-    });
-    
-    document.querySelectorAll('.layout-filter').forEach(checkbox => {
-        checkbox.addEventListener('change', filterTemplates);
-    });
-    document.getElementById('randomTemplateBtn').addEventListener('click', loadRandomTemplate);
-    
-    // АДМИНИСТРАТОР
-    document.getElementById('scanBtn').addEventListener('click', scanPortfolios);
-    document.getElementById('generateTemplatesBtn').addEventListener('click', generateTemplates);
-    document.getElementById('statsBtn').addEventListener('click', loadStats);
-    
-    // МОДАЛЬНЫЕ ОКНА
-    setupModals();
-    
-    // Загрузить шаблоны при открытии вкладки
-    const templatesTab = document.querySelector('[data-tab="templates"]');
-    if (templatesTab) {
-        templatesTab.addEventListener('click', () => {
-            setTimeout(loadTemplates, 100);
-        });
-    }
+  });
+
+  const form = document.getElementById('portfolioForm');
+  if (form) form.addEventListener('submit', generatePortfolios);
+
+  const searchInput = document.getElementById('templateSearch');
+  if (searchInput) searchInput.addEventListener('input', debounce((ev) => searchTemplates(ev.target.value), 300));
+
+  document.querySelectorAll('.layout-filter').forEach(cb => cb.addEventListener('change', filterTemplates));
+  const randomBtn = document.getElementById('randomTemplateBtn');
+  if (randomBtn) randomBtn.addEventListener('click', loadRandomTemplate);
+
+  const scanBtn = document.getElementById('scanBtn');
+  if (scanBtn) scanBtn.addEventListener('click', scanPortfolios);
+  const genBtn = document.getElementById('generateTemplatesBtn');
+  if (genBtn) genBtn.addEventListener('click', generateTemplates);
+  const statsBtn = document.getElementById('statsBtn');
+  if (statsBtn) statsBtn.addEventListener('click', loadStats);
+
+  setupModals();
 }
 
-// =============== ИНТЕРАКТИВНЫЕ ЭФФЕКТЫ ===============
-function addInteractiveEffects() {
-    // Эффект при наведении на карточки
-    document.addEventListener('mouseover', (e) => {
-        if (e.target.closest('.portfolio-card, .template-card, .admin-card')) {
-            const card = e.target.closest('.portfolio-card, .template-card, .admin-card');
-            card.style.animation = 'none';
-            setTimeout(() => {
-                card.style.animation = '';
-            }, 10);
-        }
-    });
-    
-    // Отслеживание активного таба
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeAllModals();
-        }
-    });
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => { t.style.display = 'none'; t.classList.remove('active'); });
+  const el = document.getElementById(name + '-tab');
+  if (el) { el.style.display = ''; el.classList.add('active'); }
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const activeBtn = document.querySelector(`[data-tab="${name}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  if (name === 'templates') setTimeout(loadTemplates, 60);
 }
 
-function rippleEffect(e) {
-    const btn = e.target.closest('.nav-btn');
-    if (!btn) return;
-    
-    const ripple = document.createElement('span');
-    const rect = btn.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = e.clientX - rect.left - size / 2;
-    const y = e.clientY - rect.top - size / 2;
-    
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
-    ripple.classList.add('ripple');
-    
-    btn.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
+function rippleEffect(e){
+  const btn = e.currentTarget;
+  const rect = btn.getBoundingClientRect();
+  const ripple = document.createElement('span');
+  ripple.className = 'ripple';
+  const size = Math.max(rect.width, rect.height);
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+  ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+  btn.appendChild(ripple);
+  setTimeout(()=>ripple.remove(), 600);
 }
 
-// =============== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК ===============
-function switchTab(tabName) {
-    // Скрыть все вкладки
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
+function debounce(fn, t){ let timer; return (...args)=>{ clearTimeout(timer); timer = setTimeout(()=>fn(...args), t); }; }
+
+async function generatePortfolios(e){
+  e.preventDefault();
+  const prompt = (document.getElementById('prompt') || {}).value || '';
+  if (prompt.trim().length < 10) {
+    showNotification('Опишите требования минимум 10 символов', 'error');
+    return;
+  }
+
+  const submitBtn = e.target.querySelector('.btn-primary');
+  const spinner = submitBtn && submitBtn.querySelector('.btn-spinner');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.querySelector('.btn-text').style.display = 'none'; if (spinner) spinner.style.display = 'inline'; }
+
+  // Try backend recommend
+  try {
+    const resp = await fetch(API_BASE + RECOMMEND_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt, count: 6 })
     });
-    
-    // Показать выбранную вкладку
-    const selectedTab = document.getElementById(tabName + '-tab');
-    if (selectedTab) {
-        selectedTab.classList.add('active');
+
+    if (resp.ok) {
+      const json = await resp.json();
+      const results = json.results || json.portfolios || [];
+      const mapped = (results || []).map(normalizeResult);
+      displayPortfolios(mapped);
+      showNotification('Макеты успешно сгенерированы!', 'success');
+      finalizeSubmitButton(submitBtn, spinner);
+      return;
+    } else {
+      console.warn('Recommend failed status:', resp.status);
     }
-    
-    // Обновить активную кнопку
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-    
-    // Загрузить данные при переходе на вкладку шаблонов
-    if (tabName === 'templates') {
-        loadTemplates();
+  } catch (err) {
+    console.warn('Recommend request failed:', err.message);
+  }
+
+  // Fallback1: backend portfolios endpoint
+  try {
+    const resp2 = await fetch(API_BASE + PORTFOLIOS_ENDPOINT);
+    if (resp2.ok) {
+      const json = await resp2.json();
+      const list = json.portfolios || json;
+      const found = localSearch(list, prompt, 6).map(normalizeResult);
+      displayPortfolios(found);
+      showNotification('Результаты из серверной базы (fallback)', 'info');
+      finalizeSubmitButton(submitBtn, spinner);
+      return;
     }
+  } catch (err) { console.warn('Portfolios endpoint not available:', err.message); }
+
+  // Fallback2: local file in frontend/data
+  try {
+    const l = await fetch(LOCAL_FALLBACK_JSON);
+    if (l.ok) {
+      const json = await l.json();
+      const list = json.portfolios || json;
+      const found = localSearch(list, prompt, 6).map(normalizeResult);
+      displayPortfolios(found);
+      showNotification('Режим офлайн: результаты из локального файла', 'info');
+      finalizeSubmitButton(submitBtn, spinner);
+      return;
+    }
+  } catch (err) { console.warn('Local JSON fallback failed:', err.message); }
+
+  // Final embedded fallback
+  const sample = (EMBEDDED_FALLBACK.portfolios || []).map(normalizeResult);
+  displayPortfolios(sample);
+  showNotification('Режим демо: встроенные примеры', 'info');
+  finalizeSubmitButton(submitBtn, spinner);
 }
 
-// =============== ГЕНЕРАТОР ===============
-async function generatePortfolios(e) {
-    e.preventDefault();
-    
-    const prompt = document.getElementById('prompt').value.trim();
-    
-    if (prompt.length < 10) {
-        showNotification('Опишите требования минимум 10 символов', 'error');
-        return;
-    }
-    
-    const btn = e.target.querySelector('.btn-primary');
-    const spinner = btn.querySelector('.btn-spinner');
-    btn.disabled = true;
-    btn.querySelector('.btn-text').style.display = 'none';
-    spinner.style.display = 'inline';
-    
-    try {
-        const response = await fetch(`${API_URL}/generate-portfolio`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt })
-        });
-        
-        const data = await response.json();
-        displayPortfolios(data.portfolios || []);
-        showNotification('Макеты успешно сгенерированы!', 'success');
-    } catch (error) {
-        showNotification('Ошибка при генерации: ' + error.message, 'error');
-    } finally {
-        btn.disabled = false;
-        btn.querySelector('.btn-text').style.display = 'inline';
-        spinner.style.display = 'none';
-    }
+function finalizeSubmitButton(btn, spinner){
+  if (btn) { btn.disabled = false; btn.querySelector('.btn-text').style.display = 'inline'; if (spinner) spinner.style.display = 'none'; }
 }
 
-function displayPortfolios(portfolios) {
-    const resultsSection = document.getElementById('resultsSection');
-    const resultsPlaceholder = document.getElementById('resultsPlaceholder');
-    const portfolioResults = document.getElementById('portfolioResults');
-    
-    if (portfolios.length === 0) {
-        resultsSection.style.display = 'none';
-        resultsPlaceholder.style.display = 'block';
-        return;
-    }
-    
-    resultsPlaceholder.style.display = 'none';
-    resultsSection.style.display = 'block';
-    
-    portfolioResults.innerHTML = portfolios.map((p, idx) => `
-        <div class="portfolio-card" data-index="${idx}">
-            <div class="portfolio-title">Макет ${idx + 1}</div>
-            <div class="portfolio-desc">${p.description || 'Профессиональный макет портфолио'}</div>
-            <button class="portfolio-btn" onclick="downloadGeneratedPDF(${idx})">
-                ⬇️ Скачать PDF
-            </button>
+function normalizeResult(item){
+  return {
+    id: item.id || (item.team_number ? `${item.team_number}-${item.portfolio_type||'pp'}` : 'unknown'),
+    team_name: item.team_name || item.name || '',
+    pdf_url: item.pdf_url || item.pdf || item.url || '',
+    thumbnail_url: item.thumbnail_url || item.thumbnail || item.thumb || '',
+    description: item.description || '',
+    templates: Array.isArray(item.templates) ? item.templates : (item.templates ? [item.templates] : [])
+  };
+}
+
+function localSearch(list, prompt, limit=3){
+  const q = (prompt||'').toLowerCase().trim();
+  if (!q) return (list||[]).slice(0,limit);
+  const tokens = q.split(/\s+/).filter(Boolean);
+  return (list||[]).map(item => {
+    let score = 0;
+    const text = ((item.description||'') + ' ' + (item.team_name||'') + ' ' + ((item.tags||[]).join(' '))).toLowerCase();
+    tokens.forEach(t => { if (text.includes(t)) score += 10; });
+    if ((item.achievement||'').toLowerCase().includes('world')) score += 3;
+    return { score, item };
+  }).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.item);
+}
+
+function displayPortfolios(portfolios){
+  const resultsSection = document.getElementById('resultsSection');
+  const resultsPlaceholder = document.getElementById('resultsPlaceholder');
+  const portfolioResults = document.getElementById('portfolioResults');
+
+  if (!portfolios || portfolios.length === 0) {
+    if (resultsSection) resultsSection.style.display = 'none';
+    if (resultsPlaceholder) resultsPlaceholder.style.display = 'flex';
+    if (portfolioResults) portfolioResults.innerHTML = '';
+    return;
+  }
+
+  if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
+  if (resultsSection) resultsSection.style.display = 'block';
+
+  portfolioResults.innerHTML = portfolios.map((p, idx) => {
+    const thumb = escapeHtml(p.thumbnail_url || p.pdf_url || '');
+    const desc = escapeHtml(p.description || 'Профессиональный макет портфолио');
+    const pdf = encodeURI(p.pdf_url || '#');
+    const templates = Array.isArray(p.templates) ? p.templates : (p.templates ? [p.templates] : []);
+    const templateButtons = templates.map((t, i) => {
+      const href = encodeURI(t || '#');
+      return `<a class="portfolio-btn" href="${href}" target="_blank" rel="noopener noreferrer">⬇️ Шаблон ${i+1}</a>`;
+    }).join(' ');
+
+    return `
+      <div class="portfolio-card" data-index="${idx}">
+        <img src="${thumb}" alt="thumbnail" />
+        <div class="portfolio-title">Макет ${idx + 1}</div>
+        <div class="portfolio-desc collapsed" id="desc-${idx}">${desc}</div>
+        <div class="portfolio-actions">
+          <a class="portfolio-btn" href="${pdf}" target="_blank" rel="noopener noreferrer">⬇️ Скачать пример (PDF)</a>
+          ${templateButtons}
+          <button class="about-btn" data-idx="${idx}">Подробнее</button>
         </div>
-    `).join('');
-    
-    // Добавить интерактивность к карточкам
-    document.querySelectorAll('.portfolio-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'scale(1.05)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'scale(1)';
-        });
+      </div>
+    `;
+  }).join('');
+
+  // add basic hover scale
+  document.querySelectorAll('.portfolio-card').forEach(card=>{
+    card.addEventListener('mouseenter', ()=> card.style.transform = 'scale(1.02)');
+    card.addEventListener('mouseleave', ()=> card.style.transform = '');
+  });
+
+  // attach about button listeners
+  document.querySelectorAll('.about-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.getAttribute('data-idx');
+      toggleAbout(idx, btn);
     });
+  });
 }
 
-async function downloadGeneratedPDF(index) {
-    try {
-        showNotification('Загрузка PDF...', 'info');
-        const response = await fetch(`${API_URL}/download-template/${index}`);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `portfolio_${index + 1}.pdf`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-        showNotification('PDF успешно загружен!', 'success');
-    } catch (error) {
-        showNotification('Ошибка загрузки: ' + error.message, 'error');
-    }
+function toggleAbout(idx, btn){
+  const el = document.getElementById(`desc-${idx}`);
+  if (!el) return;
+  const expanded = el.classList.toggle('collapsed') ? false : true; // if remove collapsed => expanded true
+  // Actually our class collapsed limits height; toggle collapsed -> if it was collapsed removed -> expanded true
+  if (el.classList.contains('collapsed')) {
+    btn.textContent = 'Подробнее';
+  } else {
+    btn.textContent = 'Свернуть';
+  }
 }
 
-// =============== ШАБЛОНЫ ===============
-async function loadTemplates() {
-    try {
-        const response = await fetch(`${TEMPLATES_API}/api/info`);
-        const data = await response.json();
-        displayTemplates(data.templates || []);
-    } catch (error) {
-        console.error('Ошибка загрузки шаблонов:', error);
+// ---------- Templates (library) ----------
+async function loadTemplates(){
+  try {
+    const resp = await fetch(API_BASE + PORTFOLIOS_ENDPOINT);
+    if (resp.ok) {
+      const j = await resp.json();
+      const list = (j.portfolios || j).map(p => ({
+        id: p.id || `${p.team_number}-${p.portfolio_type}`,
+        name: p.team_name || ('Template ' + (p.id || '')),
+        tags: p.tags || [],
+        url: (p.templates && p.templates[0]) || p.pdf_url || p.thumbnail_url || ''
+      }));
+      displayTemplates(list);
+      return;
     }
+  } catch (err) { console.warn('templates backend not available:', err.message); }
+
+  try {
+    const resp2 = await fetch(LOCAL_FALLBACK_JSON);
+    if (resp2.ok) {
+      const j = await resp2.json();
+      const list = (j.portfolios || j).map(p => ({
+        id: p.id || `${p.team_number}-${p.portfolio_type}`,
+        name: p.team_name || ('Template ' + (p.id || '')),
+        tags: p.tags || [],
+        url: (p.templates && p.templates[0]) || p.pdf_url || p.thumbnail_url || ''
+      }));
+      displayTemplates(list);
+      return;
+    }
+  } catch (err) { console.warn('local templates fallback failed:', err.message); }
+
+  const embedded = (EMBEDDED_FALLBACK.portfolios || []).map(p => ({ id: p.id, name: p.team_name, tags: p.tags || [], url: p.templates && p.templates[0] || p.pdf_url }));
+  displayTemplates(embedded);
 }
 
-function displayTemplates(templates) {
-    const templatesList = document.getElementById('templatesList');
-    const placeholder = document.getElementById('templatesPlaceholder');
-    
-    if (!templates || templates.length === 0) {
-        placeholder.style.display = 'block';
-        templatesList.style.display = 'none';
-        return;
-    }
-    
-    placeholder.style.display = 'none';
-    templatesList.style.display = 'grid';
-    
-    templatesList.innerHTML = templates.map(t => `
-        <div class="template-card" data-id="${t.id}">
-            <div class="template-header">🖼️</div>
-            <div class="template-body">
-                <div class="template-name">${t.name || 'Шаблон'}</div>
-                <div class="template-tags">
-                    ${(t.tags || []).slice(0, 3).map(tag => `
-                        <span class="template-tag">${tag}</span>
-                    `).join('')}
-                </div>
-            </div>
-            <div class="template-footer">
-                <button class="template-btn" onclick="quickDownloadTemplate('${t.id}')">
-                    ⬇️ Скачать
-                </button>
-            </div>
+function displayTemplates(templates){
+  const templatesList = document.getElementById('templatesList');
+  const placeholder = document.getElementById('templatesPlaceholder');
+
+  if (!templates || templates.length === 0) {
+    if (placeholder) placeholder.style.display = 'block';
+    if (templatesList) templatesList.style.display = 'none';
+    return;
+  }
+
+  if (placeholder) placeholder.style.display = 'none';
+  if (templatesList) templatesList.style.display = 'grid';
+
+  templatesList.innerHTML = templates.map(t => `
+    <div class="template-card" data-id="${escapeHtml(t.id)}">
+      <div class="template-header">🖼️</div>
+      <div class="template-body">
+        <div class="template-name">${escapeHtml(t.name)}</div>
+        <div class="template-tags">
+          ${(t.tags||[]).slice(0,3).map(tag=>`<span class="template-tag">${escapeHtml(tag)}</span>`).join('')}
         </div>
-    `).join('');
+      </div>
+      <div class="template-footer">
+        <a class="template-btn" href="${encodeURI(t.url||'#')}" target="_blank" rel="noopener">⬇️ Скачать</a>
+      </div>
+    </div>
+  `).join('');
 }
 
-async function quickDownloadTemplate(templateId) {
-    try {
-        showNotification('Загрузка шаблона...', 'info');
-        const response = await fetch(`${TEMPLATES_API}/api/download/${templateId}`);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `template_${templateId}.pdf`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-        showNotification('Шаблон успешно загружен!', 'success');
-    } catch (error) {
-        showNotification('Ошибка загрузки: ' + error.message, 'error');
-    }
+async function searchTemplates(query){
+  if (!query || query.trim().length < 2) { return loadTemplates(); }
+  try {
+    const resp = await fetch(LOCAL_FALLBACK_JSON);
+    if (!resp.ok) throw new Error('no local file');
+    const j = await resp.json();
+    const list = (j.portfolios || []).filter(p => {
+      const hay = ((p.description||'') + ' ' + (p.team_name||'') + ' ' + ((p.tags||[]).join(' '))).toLowerCase();
+      return query.toLowerCase().split(/\s+/).every(token => hay.includes(token));
+    }).map(p => ({ id:p.id || `${p.team_number}-${p.portfolio_type}`, name: p.team_name, tags: p.tags || [], url: (p.templates && p.templates[0]) || p.pdf_url }));
+    displayTemplates(list);
+  } catch (err) {
+    showNotification('Ошибка поиска шаблонов: ' + err.message, 'error');
+  }
 }
 
-async function searchTemplates(e) {
-    const query = e.target.value.trim();
-    if (query.length < 2) {
-        loadTemplates();
-        return;
-    }
-    
-    try {
-        const response = await fetch(`${TEMPLATES_API}/api/search`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: query, limit: 20 })
-        });
-        const data = await response.json();
-        displayTemplates(data.results || []);
-    } catch (error) {
-        showNotification('Ошибка поиска: ' + error.message, 'error');
-    }
+function filterTemplates(){
+  // Placeholder for client-side filtering
 }
 
-function filterTemplates() {
-    // Фильтрация по выбранным чекбоксам
-    const checked = Array.from(document.querySelectorAll('.layout-filter:checked'))
-        .map(cb => cb.value);
-    
-    const cards = document.querySelectorAll('.template-card');
-    cards.forEach(card => {
-        if (checked.length === 0) {
-            card.style.display = '';
-        }
-    });
+async function loadRandomTemplate(){
+  try {
+    const resp = await fetch(LOCAL_FALLBACK_JSON);
+    if (!resp.ok) throw new Error('no local file');
+    const j = await resp.json();
+    const list = (j.portfolios || []).slice().sort(()=>0.5 - Math.random()).slice(0,6).map(p => ({ id:p.id || `${p.team_number}-${p.portfolio_type}`, name:p.team_name, tags:p.tags||[], url:(p.templates && p.templates[0]) || p.pdf_url }));
+    displayTemplates(list);
+    showNotification('Загружены случайные шаблоны', 'success');
+  } catch (err) {
+    showNotification('Ошибка загрузки: ' + err.message, 'error');
+  }
 }
 
-async function loadRandomTemplate() {
-    try {
-        const response = await fetch(`${TEMPLATES_API}/api/random?count=5`);
-        const data = await response.json();
-        displayTemplates(data.templates || []);
-        showNotification('Загружены случайные шаблоны!', 'success');
-    } catch (error) {
-        showNotification('Ошибка загрузки: ' + error.message, 'error');
-    }
+// ---------- Admin placeholders ----------
+function scanPortfolios(){
+  document.getElementById('scanResult').style.display = 'block';
+  document.getElementById('scanMessage').innerHTML = `✅ Сканирование запущено (заглушка)`;
+  showNotification('Сканирование (заглушка)', 'info');
 }
 
-// =============== АДМИНИСТРАТОР ===============
-async function scanPortfolios() {
-    const btn = document.getElementById('scanBtn');
-    const spinner = btn.querySelector('.btn-spinner');
-    btn.disabled = true;
-    btn.querySelector('.btn-text').style.display = 'none';
-    spinner.style.display = 'inline';
-    
-    try {
-        const response = await fetch(`${API_URL}/scan-portfolios`, {
-            method: 'POST'
-        });
-        const data = await response.json();
-        
-        const result = document.getElementById('scanResult');
-        result.style.display = 'block';
-        document.getElementById('scanMessage').innerHTML = 
-            `✅ Сканирование завершено<br>Найдено портфолио: ${data.count || 0}`;
-        
-        showNotification('Сканирование завершено!', 'success');
-    } catch (error) {
-        document.getElementById('scanResult').style.display = 'block';
-        document.getElementById('scanMessage').innerHTML = `❌ Ошибка: ${error.message}`;
-        showNotification('Ошибка сканирования', 'error');
-    } finally {
-        btn.disabled = false;
-        btn.querySelector('.btn-text').style.display = 'inline';
-        spinner.style.display = 'none';
-    }
+function generateTemplates(){
+  document.getElementById('templateGenerationResult').style.display = 'block';
+  document.getElementById('templateGenMessage').innerHTML = `✅ Генерация: (заглушка)`;
+  showNotification('Генерация шаблонов (заглушка)', 'info');
 }
 
-async function generateTemplates() {
-    const count = parseInt(document.getElementById('templateCount').value) || 100;
-    const btn = document.getElementById('generateTemplatesBtn');
-    const spinner = btn.querySelector('.btn-spinner');
-    btn.disabled = true;
-    btn.querySelector('.btn-text').style.display = 'none';
-    spinner.style.display = 'inline';
-    
-    try {
-        const response = await fetch(`${TEMPLATES_API}/api/generate`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ count })
-        });
-        
-        const data = await response.json();
-        const result = document.getElementById('templateGenerationResult');
-        result.style.display = 'block';
-        document.getElementById('templateGenMessage').innerHTML = 
-            `✅ Сгенерировано шаблонов: ${data.count || count}`;
-        
-        showNotification('Шаблоны успешно сгенерированы!', 'success');
-    } catch (error) {
-        document.getElementById('templateGenerationResult').style.display = 'block';
-        document.getElementById('templateGenMessage').innerHTML = `❌ Ошибка: ${error.message}`;
-        showNotification('Ошибка генерации', 'error');
-    } finally {
-        btn.disabled = false;
-        btn.querySelector('.btn-text').style.display = 'inline';
-        spinner.style.display = 'none';
-    }
+function loadStats(){
+  document.getElementById('statsResult').style.display = 'block';
+  document.getElementById('statsMessage').innerHTML = `
+    <strong>📊 Статистика (локальная)</strong><br>
+    Используется локальная/встроенная база.
+  `;
+  showNotification('Статистика показана', 'success');
 }
 
-async function loadStats() {
-    const btn = document.getElementById('statsBtn');
-    btn.disabled = true;
-    
-    try {
-        const response = await fetch(`${TEMPLATES_API}/api/info`);
-        const data = await response.json();
-        
-        const result = document.getElementById('statsResult');
-        result.style.display = 'block';
-        document.getElementById('statsMessage').innerHTML = `
-            <strong>📊 Статистика системы:</strong><br>
-            Всего шаблонов: ${data.total_templates || 0}<br>
-            Доступных: ${data.templates?.length || 0}<br>
-            API версия: ${data.version || '1.0'}
-        `;
-        
-        showNotification('Статистика загружена!', 'success');
-    } catch (error) {
-        document.getElementById('statsResult').style.display = 'block';
-        document.getElementById('statsMessage').innerHTML = `❌ Ошибка: ${error.message}`;
-        showNotification('Ошибка загрузки статистики', 'error');
-    } finally {
-        btn.disabled = false;
-    }
+// ---------- Modals ----------
+function setupModals(){
+  document.querySelectorAll('.modal .close-btn').forEach(b => b.addEventListener('click', closeAllModals));
+  document.querySelectorAll('.close-modal-btn').forEach(b => b.addEventListener('click', closeAllModals));
+}
+function closeAllModals(){ document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+
+// ---------- Connection check ----------
+async function checkBackendConnection(){
+  try {
+    const r = await fetch(API_BASE + '/api/health-check');
+    if (r.ok) console.log('Backend OK');
+  } catch (err) { console.warn('Backend unreachable:', err.message); }
 }
 
-// =============== МОДАЛЬНЫЕ ОКНА ===============
-function setupModals() {
-    const portfolioModal = document.getElementById('portfolioModal');
-    const templateModal = document.getElementById('templateModal');
-    
-    if (portfolioModal) {
-        portfolioModal.querySelector('.modal-overlay').addEventListener('click', () => {
-            closeAllModals();
-        });
-        portfolioModal.querySelector('.close-btn').addEventListener('click', () => {
-            closeAllModals();
-        });
-        portfolioModal.querySelector('.close-modal-btn')?.addEventListener('click', () => {
-            closeAllModals();
-        });
-    }
-    
-    if (templateModal) {
-        templateModal.querySelector('.modal-overlay').addEventListener('click', () => {
-            closeAllModals();
-        });
-        templateModal.querySelector('.close-btn').addEventListener('click', () => {
-            closeAllModals();
-        });
-        templateModal.querySelector('.close-modal-btn')?.addEventListener('click', () => {
-            closeAllModals();
-        });
-    }
+// ---------- Notifications & utils ----------
+function showNotification(message, type='info'){
+  const container = (type === 'error') ? document.getElementById('errorMessage') : document.getElementById('successMessage');
+  if(!container) return;
+  container.innerHTML = message;
+  container.style.display = 'block';
+  setTimeout(()=> container.style.display = 'none', 3200);
 }
-
-function closeAllModals() {
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.style.display = 'none';
-    });
-}
-
-// =============== ПРОВЕРКА ПОДКЛЮЧЕНИЯ ===============
-async function checkBackendConnection() {
-    try {
-        const response = await fetch(`${API_URL}/health-check`);
-        if (response.ok) {
-            console.log('✅ Подключение к бэкенду успешно');
-        }
-    } catch (error) {
-        showNotification('⚠️ Ошибка подключения к серверу', 'error');
-    }
-}
-
-// =============== УВЕДОМЛЕНИЯ ===============
-function showNotification(message, type = 'info') {
-    const container = type === 'error' ? 
-        document.getElementById('errorMessage') : 
-        document.getElementById('successMessage');
-    
-    container.innerHTML = message;
-    container.style.display = 'block';
-    
-    setTimeout(() => {
-        container.style.display = 'none';
-    }, 3000);
-}
-
-// =============== УТИЛИТЫ ===============
-// Добавить CSS для ripple эффекта
-const style = document.createElement('style');
-style.textContent = `
-    .nav-btn {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
-        transform: scale(0);
-        animation: ripple-animation 0.6s ease-out;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-    
-    .active-input {
-        box-shadow: 0 0 15px rgba(220, 38, 38, 0.5) !important;
-    }
-`;
-document.head.appendChild(style);
+function escapeHtml(text){ if (!text) return ''; return String(text).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
