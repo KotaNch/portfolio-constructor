@@ -6,6 +6,24 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import normalize
 
+# Импортируем нейросетевой рекомендатель (ленивый импорт)
+NEURAL_AVAILABLE = None  # Будет определена при первом использовании
+
+def _check_neural_available():
+    """Проверяет доступность нейросети"""
+    global NEURAL_AVAILABLE
+    if NEURAL_AVAILABLE is not None:
+        return NEURAL_AVAILABLE
+    
+    try:
+        from neural_recommender import NeuralPortfolioRecommender, build_neural_recommender
+        NEURAL_AVAILABLE = True
+        return True
+    except (ImportError, OSError, Exception) as e:
+        NEURAL_AVAILABLE = False
+        print(f"Warning: Neural network unavailable ({type(e).__name__}). Using TF-IDF fallback.")
+        return False
+
 METADATA_JSON = os.path.join(os.path.dirname(__file__), 'data', 'final_portfolios.json')
 TFIDF_NGRAM = (1,2)
 
@@ -49,12 +67,29 @@ def build_corpus(items):
     return corpus
 
 class PortfolioRecommender:
-    def __init__(self, metadata_path=METADATA_JSON):
+    def __init__(self, metadata_path=METADATA_JSON, use_neural=True):
         self.items = load_metadata(metadata_path)
-        self.corpus = build_corpus(self.items)
-        self.vectorizer = TfidfVectorizer(ngram_range=TFIDF_NGRAM, min_df=1)
-        self.tfidf = self.vectorizer.fit_transform(self.corpus)
-        self.tfidf = normalize(self.tfidf, norm='l2', axis=1)
+        
+        # Проверяем доступность нейросети
+        neural_available = _check_neural_available() if use_neural else False
+        self.use_neural = use_neural and neural_available
+        
+        if self.use_neural:
+            # Используем нейросетевой рекомендатель
+            try:
+                from neural_recommender import build_neural_recommender
+                self.neural_recommender = build_neural_recommender(metadata_path)
+                print("Neural recommender initialized")
+            except Exception as e:
+                print(f"Error initializing neural network: {e}, using TF-IDF")
+                self.use_neural = False
+        
+        if not self.use_neural:
+            # Fallback на TF-IDF
+            self.corpus = build_corpus(self.items)
+            self.vectorizer = TfidfVectorizer(ngram_range=TFIDF_NGRAM, min_df=1)
+            self.tfidf = self.vectorizer.fit_transform(self.corpus)
+            self.tfidf = normalize(self.tfidf, norm='l2', axis=1)
 
     def _text_similarity(self, query):
         q = normalize_text(query)
@@ -84,6 +119,17 @@ class PortfolioRecommender:
 
     def recommend(self, prompt, user_tags=None, user_design_adjs=None, top_n=3,
                   weights=None):
+        # Используем нейросетевой рекомендатель если доступен
+        if self.use_neural and hasattr(self, 'neural_recommender'):
+            return self.neural_recommender.recommend(
+                prompt=prompt,
+                user_tags=user_tags,
+                user_design_adjs=user_design_adjs,
+                top_n=top_n,
+                weights=weights
+            )
+        
+        # Fallback на старый TF-IDF метод
         if weights is None:
             weights = {'text': 0.6, 'tags': 0.25, 'design': 0.15}
         text_sims = self._text_similarity(prompt) if prompt else np.zeros(len(self.items))
@@ -117,5 +163,6 @@ class PortfolioRecommender:
         return results[:top_n]
 
 # Convenience function to build a recommender instance
-def build_recommender():
-    return PortfolioRecommender()
+def build_recommender(use_neural=True):
+    """Создает рекомендатель, по умолчанию с нейросетью"""
+    return PortfolioRecommender(use_neural=use_neural)

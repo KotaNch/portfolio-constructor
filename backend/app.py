@@ -3,6 +3,7 @@ from flask_cors import CORS
 from portfolio_generator import PortfolioGenerator
 from portfolio_visualizer import PortfolioDesignVisualizer
 from scraper import FTCPortfolioScraper
+from layout_generator import PortfolioLayoutGenerator
 import os
 import json
 
@@ -15,8 +16,11 @@ CORS(app)
 
 from recommender import build_recommender
 
-# Initialize recommender
-recommender = build_recommender()
+# Initialize recommender (с нейросетью по умолчанию)
+recommender = build_recommender(use_neural=True)
+
+# Initialize layout generator
+layout_generator = PortfolioLayoutGenerator()
 
 # Инициализация генератора портфолио с поддержкой FTC данных
 generator = PortfolioGenerator(use_ftc_data=True)
@@ -399,6 +403,91 @@ def api_recommend():
             })
         return jsonify({'results': out}), 200
     except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/generate-layouts', methods=['POST'])
+def generate_layouts():
+    """
+    Находит подходящие портфолио на основе промта и возвращает реальные данные
+    Использует нейросеть для поиска подходящих портфолио
+    Payload: { "prompt": "...", "count": 3 }
+    """
+    try:
+        payload = request.get_json(force=True)
+        prompt = payload.get('prompt', '')
+        count = int(payload.get('count', 3))
+        
+        if not prompt or len(prompt.strip()) < 10:
+            return jsonify({'error': 'Промт должен содержать минимум 10 символов'}), 400
+        
+        # Находим подходящие портфолио с помощью нейросети
+        recommended = recommender.recommend(prompt, top_n=count)
+        
+        if not recommended:
+            return jsonify({'error': 'Не найдено подходящих портфолио'}), 404
+        
+        # Формируем ответ с реальными данными портфолио
+        result = {
+            'success': True,
+            'count': len(recommended),
+            'portfolios': []
+        }
+        
+        for i, portfolio in enumerate(recommended):
+            # Извлекаем метаданные
+            metadata = portfolio.get('metadata', {})
+            
+            # Формируем данные портфолио с расширенным описанием
+            description = metadata.get('description', '')
+            tags = metadata.get('tags', [])
+            design_en = metadata.get('design_adjectives_en', [])
+            design_ru = metadata.get('design_adjectives_ru', [])
+            
+            # Создаем расширенное описание
+            extended_description = description
+            if tags:
+                extended_description += f"\n\nТеги: {', '.join(tags[:15])}"  # Первые 15 тегов
+            if design_en or design_ru:
+                design_all = design_en + design_ru
+                extended_description += f"\n\nСтиль дизайна: {', '.join(design_all[:10])}"  # Первые 10 прилагательных
+            
+            portfolio_data = {
+                'id': portfolio.get('id'),
+                'team_name': portfolio.get('team_name') or metadata.get('team_name', ''),
+                'team_number': metadata.get('team_number', ''),
+                'achievement': metadata.get('achievement', ''),
+                'portfolio_type': metadata.get('portfolio_type', ''),
+                'thumbnail_url': portfolio.get('thumbnail_url') or metadata.get('thumbnail_url', ''),
+                'pdf_url': portfolio.get('pdf_url') or metadata.get('pdf_url', ''),
+                'description': description,  # Оригинальное описание
+                'extended_description': extended_description,  # Расширенное описание
+                'tags': tags,
+                'design_adjectives_en': design_en,
+                'design_adjectives_ru': design_ru,
+                'score': portfolio.get('score', 0.0),
+                'components': portfolio.get('components', {}),
+                # Информация о том, как был выбран этот портфолио
+                'selection_info': {
+                    'text_similarity': portfolio.get('components', {}).get('text_sim', 0.0),
+                    'tag_match': portfolio.get('components', {}).get('tag_score', 0.0),
+                    'design_match': portfolio.get('components', {}).get('design_score', 0.0),
+                    'method': 'neural_network' if (hasattr(recommender, 'use_neural') and recommender.use_neural) or (hasattr(recommender, 'neural_recommender') and recommender.neural_recommender) else 'tfidf'
+                },
+                # 3 ссылки на шаблоны (пока заглушки, будут добавлены позже)
+                'template_urls': [
+                    None,  # Будет добавлено позже
+                    None,  # Будет добавлено позже
+                    None   # Будет добавлено позже
+                ]
+            }
+            
+            result['portfolios'].append(portfolio_data)
+        
+        return jsonify(result), 200
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':

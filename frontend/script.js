@@ -3,6 +3,7 @@
 
 const API_BASE = ''; // relative origin
 const RECOMMEND_ENDPOINT = '/api/recommend';
+const GENERATE_LAYOUTS_ENDPOINT = '/api/generate-layouts';
 const PORTFOLIOS_ENDPOINT = '/api/portfolios';
 const LOCAL_FALLBACK_JSON = 'data/final_portfolios.json';
 
@@ -108,12 +109,35 @@ async function generatePortfolios(e){
   const spinner = submitBtn && submitBtn.querySelector('.btn-spinner');
   if (submitBtn) { submitBtn.disabled = true; submitBtn.querySelector('.btn-text').style.display = 'none'; if (spinner) spinner.style.display = 'inline'; }
 
-  // Try backend recommend
+  // Try new generate-layouts endpoint (with neural network)
+  try {
+    const resp = await fetch(API_BASE + GENERATE_LAYOUTS_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt, count: 3 })
+    });
+
+    if (resp.ok) {
+      const json = await resp.json();
+      if (json.success && json.portfolios) {
+        displayPortfoliosFromAPI(json.portfolios);
+        showNotification('Найдено подходящих портфолио!', 'success');
+        finalizeSubmitButton(submitBtn, spinner);
+        return;
+      }
+    } else {
+      console.warn('Generate layouts failed status:', resp.status);
+    }
+  } catch (err) {
+    console.warn('Generate layouts request failed:', err.message);
+  }
+
+  // Fallback: Try backend recommend
   try {
     const resp = await fetch(API_BASE + RECOMMEND_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt, count: 6 })
+      body: JSON.stringify({ prompt, top_n: 3 })
     });
 
     if (resp.ok) {
@@ -192,6 +216,78 @@ function localSearch(list, prompt, limit=3){
     if ((item.achievement||'').toLowerCase().includes('world')) score += 3;
     return { score, item };
   }).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.item);
+}
+
+function displayPortfoliosFromAPI(portfolios){
+  const resultsSection = document.getElementById('resultsSection');
+  const resultsPlaceholder = document.getElementById('resultsPlaceholder');
+  const portfolioResults = document.getElementById('portfolioResults');
+
+  if (!portfolios || portfolios.length === 0) {
+    if (resultsSection) resultsSection.style.display = 'none';
+    if (resultsPlaceholder) resultsPlaceholder.style.display = 'flex';
+    if (portfolioResults) portfolioResults.innerHTML = '';
+    return;
+  }
+
+  if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
+  if (resultsSection) resultsSection.style.display = 'block';
+
+  portfolioResults.innerHTML = portfolios.map((p, idx) => {
+    const thumb = escapeHtml(p.thumbnail_url || '');
+    const desc = escapeHtml(p.extended_description || p.description || 'Профессиональный макет портфолио');
+    const pdf = encodeURI(p.pdf_url || '#');
+    const teamName = escapeHtml(p.team_name || 'Неизвестная команда');
+    const score = (p.score || 0).toFixed(2);
+    const selectionInfo = p.selection_info || {};
+    const textSim = (selectionInfo.text_similarity || 0).toFixed(2);
+    
+    // 3 ссылки на шаблоны (пока заглушки)
+    const templateUrls = p.template_urls || [null, null, null];
+    const templateButtons = templateUrls.map((url, i) => {
+      if (url) {
+        return `<a class="portfolio-btn" href="${encodeURI(url)}" target="_blank" rel="noopener noreferrer">⬇️ Шаблон ${i+1}</a>`;
+      } else {
+        return `<span class="portfolio-btn" style="opacity: 0.5; cursor: not-allowed;">⬇️ Шаблон ${i+1} (скоро)</span>`;
+      }
+    }).join(' ');
+
+    return `
+      <div class="portfolio-card" data-index="${idx}">
+        ${thumb ? `<img src="${thumb}" alt="thumbnail" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px;" />` : '<div style="width: 100%; height: 200px; background: #f0f0f0; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #999;">Нет изображения</div>'}
+        <div class="portfolio-title">${teamName}</div>
+        <div class="portfolio-meta" style="font-size: 0.9em; color: #666; margin-bottom: 10px;">
+          <span>Релевантность: ${score}</span>
+          ${p.team_number ? `<span> | Команда: ${escapeHtml(p.team_number)}</span>` : ''}
+          ${p.achievement ? `<span> | ${escapeHtml(p.achievement)}</span>` : ''}
+          ${p.portfolio_type ? `<span> | Тип: ${escapeHtml(p.portfolio_type.toUpperCase())}</span>` : ''}
+        </div>
+        <div style="font-size: 0.85em; color: #888; margin-bottom: 10px; padding: 8px; background: #f9f9f9; border-radius: 4px;">
+          <strong>Почему выбрано:</strong> Семантическое сходство: ${textSim} | Метод: ${selectionInfo.method || 'tfidf'}
+        </div>
+        <div class="portfolio-desc collapsed" id="desc-${idx}">${desc}</div>
+        <div class="portfolio-actions">
+          ${pdf && pdf !== '#' ? `<a class="portfolio-btn" href="${pdf}" target="_blank" rel="noopener noreferrer">⬇️ Скачать PDF</a>` : ''}
+          ${templateButtons}
+          <button class="about-btn" data-idx="${idx}">Подробнее</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // add basic hover scale
+  document.querySelectorAll('.portfolio-card').forEach(card=>{
+    card.addEventListener('mouseenter', ()=> card.style.transform = 'scale(1.02)');
+    card.addEventListener('mouseleave', ()=> card.style.transform = '');
+  });
+
+  // attach about button listeners
+  document.querySelectorAll('.about-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.getAttribute('data-idx');
+      toggleAbout(idx, btn);
+    });
+  });
 }
 
 function displayPortfolios(portfolios){
