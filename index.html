@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Red Lotus - Portfolio Constructor</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="red-lotus-theme">
+    <div class="wrapper">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-container">
+                <div class="logo-section">
+                    <div class="logo-icon-large" aria-hidden="true"></div>
+                    <div class="logo-text-group">
+                        <h1 class="logo">EXPRESS PORTFOLIO</h1>
+                        <p class="tagline">Portfolio Constructor для FTC команд</p>
+                    </div>
+                </div>
+                <nav class="nav-tabs" role="navigation" aria-label="Main">
+                    <button class="nav-btn active glow-btn" data-tab="generator">
+                        <span class="icon" aria-hidden="true"></span> Генератор
+                    </button>
+                    <!-- <button class="nav-btn glow-btn" data-tab="templates">
+                        <span class="icon" aria-hidden="true">📚</span> Шаблоны
+                    </button> -->
+                    <!-- <button class="nav-btn glow-btn" data-tab="admin">
+                        <span class="icon" aria-hidden="true"></span> Администратор
+                    </button> -->
+                </nav>
+            </div>
+            <div class="header-glow" aria-hidden="true"></div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <!-- TAB 1: ГЕНЕРАТОР -->
+            <section id="generator-tab" class="tab-content active">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Генератор макетов портфолио</h2>
+                        <p>Опишите требования — получите готовый макет портфолио</p>
+                    </div>
+
+                    <div class="generator-layout">
+                        <!-- INPUT PANEL: now full-width / tall -->
+                        <div class="generator-form-panel">
+                            <form id="portfolioForm" class="generator-form">
+                                <div class="form-group">
+                                    <label for="prompt" class="form-label">
+                                        <span class="label-text">Описание портфолио</span>
+                                        <span class="label-hint">Минимум 10 символов</span>
+                                    </label>
+                                    <textarea 
+                                        id="prompt" 
+                                        class="form-textarea interactive-input"
+                                        placeholder="Пример: красный черный минимализм с секциями для команды, проектов, расписания и галереи..."
+                                        rows="8"
+                                    ></textarea>
+                                    <div class="form-help">
+                                        Опишите:
+                                        <ul>
+                                            <li>Стиль (минимализм, современный, корпоративный и т.д.)</li>
+                                            <li>Цветовую схему (красный, черный, комбинированный)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-large pulse-btn">
+                                    <span class="btn-text">Сгенерировать макеты</span>
+                                    <span class="btn-spinner" style="display: none;"></span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- RESULTS PANEL: under input -->
+                        <div class="results-panel">
+                            <div id="resultsPlaceholder" class="results-placeholder">
+                                <div class="placeholder-icon" aria-hidden="true"></div>
+                                <p>Результаты генерации появятся здесь</p>
+                                <div class="placeholder-pulse" aria-hidden="true"></div>
+                            </div>
+
+                            <div id="resultsSection" class="results-section" style="display: none;">
+                                <h3>Сгенерированные макеты</h3>
+                                <div id="portfolioResults" class="portfolio-grid" aria-live="polite">
+                                    <!-- Результаты -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: ШАБЛОНЫ -->
+            <section id="templates-tab" class="tab-content" style="display: none;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>📚 Библиотека шаблонов</h2>
+                        <p>Поиск и скачивание готовых PDF шаблонов портфолио</p>
+                    </div>
+
+                    <div class="templates-layout">
+                        <!-- ПОИСК -->
+                        <div class="search-panel">
+                            <div class="form-group">
+                                <label for="templateSearch" class="form-label">Поиск шаблонов</label>
+                                <input 
+                                    type="text" 
+                                    id="templateSearch"
+                                    class="form-input interactive-input"
+                                    placeholder="Введите слова для поиска (красный, минимализм и т.д.)..."
+                                />
+                                <span class="search-icon" aria-hidden="true">🔍</span>
+                            </div>
+
+                            <div class="filter-group">
+                                <label class="form-label">Фильтры</label>
+                                <div class="filter-options">
+                                    <label class="checkbox-label interactive-checkbox">
+                                        <input type="checkbox" class="layout-filter" value="modern_minimal">
+                                        <span>Современный минимализм</span>
+                                    </label>
+                                    <label class="checkbox-label interactive-checkbox">
+                                        <input type="checkbox" class="layout-filter" value="corporate_bold">
+                                        <span>Корпоративный</span>
+                                    </label>
+                                    <label class="checkbox-label interactive-checkbox">
+                                        <input type="checkbox" class="layout-filter" value="creative_artistic">
+                                        <span>Творческий</span>
+                                    </label>
+                                    <label class="checkbox-label interactive-checkbox">
+                                        <input type="checkbox" class="layout-filter" value="tech_focused">
+                                        <span>Технологичный</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button id="randomTemplateBtn" class="btn btn-secondary hover-lift">
+                                <span class="icon">🎲</span> Случайный шаблон
+                            </button>
+                        </div>
+
+                        <!-- СПИСОК ШАБЛОНОВ -->
+                        <div class="templates-list-panel">
+                            <div id="templatesPlaceholder" class="placeholder">
+                                <p>Загрузка шаблонов...</p>
+                                <div class="loader" aria-hidden="true"></div>
+                            </div>
+                            <div id="templatesList" class="templates-grid" style="display: none;">
+                                <!-- Шаблоны -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: АДМИНИСТРАТОР -->
+            <section id="admin-tab" class="tab-content" style="display: none;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Администратор</h2>
+                        <p>Управление данными и обновление базы</p>
+                    </div>
+
+                    <div class="admin-grid">
+                        <div class="admin-card hover-card">
+                            <div class="card-icon">🔍</div>
+                            <h3>Сканирование портфолио</h3>
+                            <p>Обновить базу данных FTC портфолио со стороннего сайта</p>
+                            <button id="scanBtn" class="btn btn-warning">
+                                <span class="btn-text">Сканировать</span>
+                                <span class="btn-spinner" style="display: none;">⏳</span>
+                            </button>
+                            <div id="scanResult" class="scan-result" style="display: none;">
+                                <p id="scanMessage"></p>
+                            </div>
+                        </div>
+
+                        <div class="admin-card hover-card">
+                            <div class="card-icon">🖼️</div>
+                            <h3>Генератор шаблонов</h3>
+                            <p>Сгенерировать новые PDF шаблоны для библиотеки</p>
+                            <div class="form-group">
+                                <label for="templateCount" class="form-label">Количество шаблонов</label>
+                                <input type="number" id="templateCount" class="form-input interactive-input" value="100" min="1" max="1000">
+                            </div>
+                            <button id="generateTemplatesBtn" class="btn btn-success">
+                                <span class="btn-text">Сгенерировать</span>
+                                <span class="btn-spinner" style="display: none;">⏳</span>
+                            </button>
+                            <div id="templateGenerationResult" style="display: none;">
+                                <p id="templateGenMessage"></p>
+                            </div>
+                        </div>
+
+                        <div class="admin-card hover-card">
+                            <div class="card-icon">📊</div>
+                            <h3>Статистика</h3>
+                            <p>Информация о системе и доступных шаблонах</p>
+                            <button id="statsBtn" class="btn btn-info">
+                                <span class="btn-text">Показать статистику</span>
+                            </button>
+                            <div id="statsResult" style="display: none;">
+                                <p id="statsMessage"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- NOTIFICATIONS -->
+        <div id="errorMessage" class="notification error-notification" style="display: none;"></div>
+        <div id="successMessage" class="notification success-notification" style="display: none;"></div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 Red Lotus | FTC Portfolio Constructor</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПОРТФОЛИО -->
+    <div id="portfolioModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-glow">
+            <button class="close-btn" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <!-- Содержимое портфолио -->
+            </div>
+            <div class="modal-footer">
+                <button id="downloadPdfBtn" class="btn btn-primary">
+                    <!-- <span class="icon"></span> Скачать PDF -->
+                </button>
+                <button class="btn btn-secondary close-modal-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ШАБЛОНА -->
+    <div id="templateModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-glow">
+            <button class="close-btn" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <!-- Информация о шаблоне -->
+            </div>
+            <div class="modal-footer">
+                <button id="downloadTemplateBtn" class="btn btn-primary">
+                    <span class="icon"></span> Скачать PDF шаблон
+                </button>
+                <button class="btn btn-secondary close-modal-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
